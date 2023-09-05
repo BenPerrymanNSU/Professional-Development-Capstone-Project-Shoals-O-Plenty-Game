@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    public MeshRenderer mesh;
+    public SpriteRenderer sprite;
+    public GameObject iconFocus;
+    private bool isLooking = false;
+
+    void Start(){
+        sprite.enabled = false;
+        isLooking = false;
+    }
 
     void OnTriggerEnter(Collider col){
         if (col.tag == "InteractableUI"){
-            mesh.enabled = true;
+            sprite.enabled = true;
+            isLooking = true;
+
         }
     }
 
     void OnTriggerExit(Collider col){
         if (col.tag == "InteractableUI"){
-            mesh.enabled = false;
+            sprite.enabled = false;
+            isLooking = false;
+        }
+    }
+
+    void Update(){
+        if (isLooking == true){
+            transform.rotation = Quaternion.LookRotation(transform.position - iconFocus.transform.position);
         }
     }
 }
