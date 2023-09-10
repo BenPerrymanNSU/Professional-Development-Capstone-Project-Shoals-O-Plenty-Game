@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCommands : MonoBehaviour
 {
     private KeyCode[] commandKeys;
-    public GameObject interactableObjectIcon;
+    public GameObject interactableObjectIcon = null;
     public string ScriptName;
     private string ComponentName;
     private bool actionPerformed = false;
@@ -21,12 +21,18 @@ public class PlayerCommands : MonoBehaviour
             var ckey = commandKeys[i];
             if (Input.GetKey(ckey)) {
                 if (ckey == KeyCode.E){
-                    var function = interactableObjectIcon.GetComponent(ScriptName) as MonoBehaviour;
-                    if(actionPerformed == false){
-                        function.enabled = true;
-                        actionPerformed = true;
+                    if (interactableObjectIcon == null){
+                        break;
                     }
-                    Invoke("CommandCoolDown", 1f);
+                    else{
+                        var function = interactableObjectIcon.GetComponent(ScriptName) as MonoBehaviour;
+                        if(actionPerformed == false){
+                            function.enabled = true;
+                            function.SendMessage("ScriptFunction", true);
+                            actionPerformed = true;
+                        }
+                        Invoke("CommandCoolDown", 1f);
+                    }
                 }
             }
         }
