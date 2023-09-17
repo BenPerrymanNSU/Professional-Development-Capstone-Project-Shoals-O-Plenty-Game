@@ -9,6 +9,8 @@ public class ClockScript : MonoBehaviour
     public float dayCycle = 30f;
     float playTime = 0f;
     float currentTime = 0f;
+    public float calcHour = 0f;
+    public float calcMinute = 0f;
     string twentyFourHourString;
 
     public Text clockDisplay;
@@ -16,7 +18,9 @@ public class ClockScript : MonoBehaviour
     void Update(){
         playTime += Time.deltaTime;
         currentTime = playTime % dayCycle;
-        twentyFourHourString = Mathf.FloorToInt(ObtainHour()).ToString("00") + ":" + Mathf.FloorToInt(ObtainMinute()).ToString("00");
+        calcHour = Mathf.FloorToInt(ObtainHour());
+        calcMinute = Mathf.FloorToInt(ObtainMinute());
+        twentyFourHourString = calcHour.ToString("00") + ":" + calcMinute.ToString("00");
         clockDisplay.text = twentyFourHourString;
     }
 
