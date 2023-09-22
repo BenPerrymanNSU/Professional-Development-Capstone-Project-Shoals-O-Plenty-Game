@@ -16,6 +16,7 @@ public class ButtonUIManager : MonoBehaviour
 
     // loads scene 0, the main menu
     public void SceneReturn(){
+        Debug.Log("fwtessafde");
         SceneManager.LoadScene(0);
     }
 
