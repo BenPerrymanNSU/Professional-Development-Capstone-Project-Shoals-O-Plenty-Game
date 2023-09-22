@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1880253709386642839}
   - component: {fileID: 3326024203703287680}
   - component: {fileID: 8237554326059932307}
-  - component: {fileID: 3694899374940814192}
   m_Layer: 0
   m_Name: PlayerTest2
   m_TagString: Player
@@ -139,26 +138,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3694899374940814192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4727968740484058180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
 --- !u!1 &5154273496094424728
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,9 +261,8 @@ GameObject:
   - component: {fileID: 6303890725502941651}
   - component: {fileID: 6676482434725867610}
   - component: {fileID: 1644397573292184585}
-  - component: {fileID: 600496958388485949}
-  - component: {fileID: 5994830315575755803}
-  - component: {fileID: 6589510412070908874}
+  - component: {fileID: 821754906308687561}
+  - component: {fileID: 2958648690474999510}
   m_Layer: 0
   m_Name: PlayerTestCamera
   m_TagString: Untagged
@@ -359,7 +337,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5469173433711607791}
   m_Enabled: 1
---- !u!114 &600496958388485949
+--- !u!114 &821754906308687561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -371,8 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c5f5cd17c953f488842e59442004f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPOV: {fileID: 6303890725502941651}
---- !u!114 &5994830315575755803
+  playerPOV: {fileID: 0}
+--- !u!114 &2958648690474999510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,31 +359,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5469173433711607791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0958f4541a5dcc4790abe65a774fffc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e7240620344b5d4bb75781f65c91c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 3694899374940814192}
-  animator: {fileID: 8345638744607305033}
-  movementAcceleration: 0
-  movementMaxSpeed: 10000
-  moveDirection: {x: 0, y: 0, z: 0}
-  rigidBody: {fileID: 1880253709386642839}
---- !u!114 &6589510412070908874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5469173433711607791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa5f7b15c45db848bc5bf09885c2112, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hunger: 100
-  Thirst: 100
-  Rest: 100
-  clockTimer: {fileID: 0}
 --- !u!1001 &8345638744616785961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -591,11 +547,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e15121f5f042ed46aba81406403f2d2, type: 3}
---- !u!95 &8345638744607305033 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: 7e15121f5f042ed46aba81406403f2d2, type: 3}
-  m_PrefabInstance: {fileID: 8345638744616785961}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8345638744616387243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 7e15121f5f042ed46aba81406403f2d2, type: 3}
