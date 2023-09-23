@@ -10,7 +10,7 @@ public class TestFunctionScript : MonoBehaviour
     public Image Reticle;
     public Button yesButton;
     public Button noButton;
-    private bool ButtonClicked;
+    //private bool ButtonClicked = false;
 
     void ScriptFunction(bool called){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
@@ -35,7 +35,7 @@ public class TestFunctionScript : MonoBehaviour
     }
 
     public void YesButton(bool called){
-        ButtonClicked = true;
+        //ButtonClicked = true;
         Menu.gameObject.SetActive(false);
         Reticle.gameObject.SetActive(true);
         Cursor.visible = false;
@@ -47,7 +47,7 @@ public class TestFunctionScript : MonoBehaviour
     }
 
     public void NoButton(bool called){
-        ButtonClicked = false;
+        //ButtonClicked = false;
         Menu.gameObject.SetActive(false);
         Reticle.gameObject.SetActive(true);
         Cursor.visible = false;

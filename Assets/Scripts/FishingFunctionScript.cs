@@ -10,7 +10,7 @@ public class FishingFunctionScript : MonoBehaviour
     public Image Reticle;
     public Button yesButton;
     public Button noButton;
-    private bool ButtonClicked;
+    //private bool ButtonClicked;
 
     void ScriptFunction(bool called){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
@@ -35,11 +35,12 @@ public class FishingFunctionScript : MonoBehaviour
     }
 
     public void YesButton(bool called){
+        //ButtonClicked = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void NoButton(bool called){
-        ButtonClicked = false;
+        //ButtonClicked = false;
         Menu.gameObject.SetActive(false);
         Reticle.gameObject.SetActive(true);
         Cursor.visible = false;
