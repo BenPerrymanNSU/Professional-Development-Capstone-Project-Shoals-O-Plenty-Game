@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractableUI
   - ObjectOfInterest
+  - FishKey
   layers:
   - Default
   - TransparentFX
