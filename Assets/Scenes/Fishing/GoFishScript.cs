@@ -20,6 +20,7 @@ public class GoFishScript : MonoBehaviour
     public GameObject ellipsis3;
     public GameObject Line;
     public GameObject Bobber;
+    public Animator FishKeyMovement;
 
     public void GoFish(){
         Line.SetActive(true);
@@ -57,6 +58,7 @@ public class GoFishScript : MonoBehaviour
             fishingKey8.SetActive(true);
             fishingKey9.SetActive(true);
             Debug.Log("Fish");
+            StartCoroutine(MoveFishKeys());
         }
         else if(Random.value < resourcePercentage){
             fishingUI.SetActive(true);
@@ -71,9 +73,19 @@ public class GoFishScript : MonoBehaviour
             fishingKey8.SetActive(true);
             fishingKey9.SetActive(true);
             Debug.Log("Rock");
+            StartCoroutine(MoveFishKeys());
         }
         else{
-            Debug.Log("Nothin");
+            Debug.Log("Nothin"); 
         }
+    }
+
+    private IEnumerator MoveFishKeys(){
+        yield return new WaitForSeconds(3f);
+        //FishKeyMovement["FishKeyMoving"].wrapMode = WrapMode.Once;
+        Debug.Log("Help");
+        FishKeyMovement.SetBool("FishBool", true);
+        yield return new WaitForSeconds(1f);
+        FishKeyMovement.SetBool("FishBool", false);
     }
 }
