@@ -9,13 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627157331433720939}
+  - component: {fileID: 1626041909}
+  - component: {fileID: 1626041908}
   m_Layer: 0
   m_Name: PlayerFishSensor
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &627157331433720939
 Transform:
   m_ObjectHideFlags: 0
@@ -35,6 +37,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1626041909
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717182933772511378}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04eeaa698bc23c9468dcc86fb46358dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1626041908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717182933772511378}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33855cfb48acba742a0a0b625960bb7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerBobberMover: {fileID: 1626041909}
+  PlayerBobber: {fileID: 717182933772511378}
 --- !u!1 &870007031485880416
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,9 +82,11 @@ GameObject:
   - component: {fileID: 9009111644217244606}
   - component: {fileID: 4969948899417264918}
   - component: {fileID: 7353236142551325860}
+  - component: {fileID: 1005231802}
+  - component: {fileID: 1005231804}
   m_Layer: 3
   m_Name: BobberTrigger
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +156,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1005231802
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870007031485880416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2.0000002
+  m_Direction: 1
+  m_Center: {x: 0.00000005960464, y: 0.0000019073486, z: 0.0000037252903}
+--- !u!114 &1005231804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870007031485880416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cfe1121b1120b4d96e0f6bde54899c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishPercentageText: {fileID: 0}
+  bobberIndicater: {fileID: 3501190138415982681}
+  fishCatchPercentage: 0
 --- !u!1 &3501190138415982681
 GameObject:
   m_ObjectHideFlags: 0
