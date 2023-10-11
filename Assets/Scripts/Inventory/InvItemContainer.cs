@@ -7,9 +7,11 @@ using UnityEngine.Events;
 public class InvItemContainer : MonoBehaviour
 {
     [SerializeField] private int invContainerSize;
-    public static UnityAction<InvItemSystem> OnInvDisplayRequest;
     [SerializeField] protected InvItemSystem invSystem;
+
     public InvItemSystem InvSystem2 => invSystem;
+
+    public static UnityAction<InvItemSystem> OnInvDisplayRequest;
 
     private void Awake(){
         invSystem = new InvItemSystem(invContainerSize);
