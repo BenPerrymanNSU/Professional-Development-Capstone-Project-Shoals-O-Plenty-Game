@@ -5,21 +5,23 @@ using UnityEngine.InputSystem;
 
 public abstract class InvScript_UIDisplay : MonoBehaviour
 {
-    /*
     [SerializeField] MouseData mouseInvItem;
     protected InvItemSystem invDisSystem;
     protected Dictionary<InvScript_UI, InvItemSlot> invDisSlotDict;
     public InvItemSystem invDisSystem2 => invDisSystem;
     public Dictionary<InvScript_UI, InvItemSlot> invDisSlotDict2 => invDisSlotDict;
+    protected virtual void Start(){
+
+    }
     public abstract void AssignSlot(InvItemSystem invToDisplay);
-    protected virtual void UpdateSlot(InvItemSystem updatedSlot){
+    protected virtual void UpdateSlot(InvItemSlot updatedSlot){
         foreach(var slot in invDisSlotDict2){
             if(slot.Value == updatedSlot){
                 slot.Key.UpdateUISlot(updatedSlot);
             }
         }
     }
-    */
+
     public void SlotClicked(InvScript_UI clickedSlot){
         Debug.Log("Slot clicked");
     }

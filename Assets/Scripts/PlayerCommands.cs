@@ -6,9 +6,11 @@ public class PlayerCommands : MonoBehaviour
 {
     private KeyCode[] commandKeys;
     public GameObject interactableObjectIcon = null;
+    public GameObject InventoryMenu;
     public string ScriptName;
     private string ComponentName;
     private bool actionPerformed = false;
+    private bool InventoryOpen = false;
 
 
     void Start()
@@ -33,6 +35,22 @@ public class PlayerCommands : MonoBehaviour
                         }
                         Invoke("CommandCoolDown", 1f);
                     }
+                }
+                else if(ckey == KeyCode.I && InventoryOpen == false){
+                        if(actionPerformed == false){
+                            InventoryOpen = true;
+                            InventoryMenu.SetActive(true);
+                            actionPerformed = true;
+                        }
+                        Invoke("CommandCoolDown", 1f);
+                }
+                else if(ckey == KeyCode.I && InventoryOpen == true){
+                        if(actionPerformed == false){
+                            InventoryOpen = false;
+                            InventoryMenu.SetActive(false);
+                            actionPerformed = true;
+                        }
+                        Invoke("CommandCoolDown", 1f);
                 }
             }
         }

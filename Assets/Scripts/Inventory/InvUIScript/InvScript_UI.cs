@@ -13,7 +13,7 @@ public class InvScript_UI : MonoBehaviour
 
     private void Awake(){
         EmptyUISlot();
-        slotButton.GetComponent<Button>();
+        slotButton = GetComponent<Button>();
         slotButton?.onClick.AddListener(OnUISlotButtonClick);
         ParentDisplay = transform.parent.GetComponent<InvScript_UIDisplay>();
     }
