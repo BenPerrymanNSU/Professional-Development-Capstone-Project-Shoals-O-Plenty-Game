@@ -3279,6 +3279,18 @@ MonoBehaviour:
   goFishButton: {fileID: 262022375}
   exitButton: {fileID: 2119221320}
   requiredPercent: 0
+  itemDataEasyFish:
+  - {fileID: 11400000, guid: ef0403e61d28644469f0dcbe4441d726, type: 2}
+  - {fileID: 11400000, guid: bc5e9c11779de4b42a61884d100e599e, type: 2}
+  - {fileID: 11400000, guid: 3058a5fad21d2224f9be8f942e2ef198, type: 2}
+  itemDataMedFish:
+  - {fileID: 11400000, guid: 8ae5aac6707558d4080ae2d6d5258f44, type: 2}
+  - {fileID: 11400000, guid: 657c3ccd6fa789647907a1c3a18bc17d, type: 2}
+  - {fileID: 11400000, guid: f942685ab24816c4a8dc0cb0926966d5, type: 2}
+  itemDataHardFish:
+  - {fileID: 11400000, guid: a760427bd4f5c2449b9cd790efaf8c69, type: 2}
+  - {fileID: 11400000, guid: e5c83bc7e79864c42aca145e38c014bf, type: 2}
+  - {fileID: 11400000, guid: 020bf61b75f8dac4091e91b822fdfc22, type: 2}
 --- !u!1001 &1795057054
 PrefabInstance:
   m_ObjectHideFlags: 0
