@@ -4455,6 +4455,7 @@ GameObject:
   - component: {fileID: 1039597616}
   - component: {fileID: 1039597615}
   - component: {fileID: 1039597614}
+  - component: {fileID: 1039597617}
   m_Layer: 0
   m_Name: Icon2
   m_TagString: ObjectOfInterest
@@ -4556,6 +4557,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1039597617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039597612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b933bada563f6bf47a7c596e2d49164a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menu: {fileID: 635323135}
+  Reticle: {fileID: 1597290688}
+  yesButton: {fileID: 952104275}
+  noButton: {fileID: 1106858253}
 --- !u!1 &1045091642
 GameObject:
   m_ObjectHideFlags: 0
@@ -8399,6 +8416,7 @@ GameObject:
   - component: {fileID: 2106701966}
   - component: {fileID: 2106701969}
   - component: {fileID: 2106701970}
+  - component: {fileID: 2106701971}
   m_Layer: 0
   m_Name: IconSleepingBag
   m_TagString: ObjectOfInterest
@@ -8501,6 +8519,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &2106701971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106701964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b933bada563f6bf47a7c596e2d49164a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menu: {fileID: 635323135}
+  Reticle: {fileID: 1597290688}
+  yesButton: {fileID: 952104275}
+  noButton: {fileID: 1106858253}
 --- !u!1 &2127391833
 GameObject:
   m_ObjectHideFlags: 0
