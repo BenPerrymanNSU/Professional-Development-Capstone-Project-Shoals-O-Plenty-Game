@@ -7,6 +7,7 @@ public class PlayerCommands : MonoBehaviour
     private KeyCode[] commandKeys;
     public GameObject interactableObjectIcon = null;
     public GameObject InventoryMenu;
+    private GameObject cameraMan;
     public string ScriptName;
     private string ComponentName;
     private bool actionPerformed = false;
@@ -16,6 +17,7 @@ public class PlayerCommands : MonoBehaviour
     void Start()
     {
         commandKeys = new KeyCode[] { KeyCode.E, KeyCode.I };
+        cameraMan = GameObject.Find("PlayerTestCamera");
     }
 
     void FixedUpdate(){  
@@ -36,21 +38,24 @@ public class PlayerCommands : MonoBehaviour
                         Invoke("CommandCoolDown", 1f);
                     }
                 }
-                else if(ckey == KeyCode.I && InventoryOpen == false){
-                        if(actionPerformed == false){
-                            InventoryOpen = true;
-                            InventoryMenu.SetActive(true);
-                            actionPerformed = true;
-                        }
-                        Invoke("CommandCoolDown", 1f);
+
+                if(ckey == KeyCode.I && InventoryOpen == false && actionPerformed == false){
+                    InventoryMenu.SetActive(true);
+                    InventoryOpen = true;
+                    cameraMan.GetComponent<PlayerPOV>().enabled = false;
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.Confined;
+                    actionPerformed = true;
+                    Invoke("CommandCoolDown", 0.5f);
                 }
-                else if(ckey == KeyCode.I && InventoryOpen == true){
-                        if(actionPerformed == false){
-                            InventoryOpen = false;
-                            InventoryMenu.SetActive(false);
-                            actionPerformed = true;
-                        }
-                        Invoke("CommandCoolDown", 1f);
+                else if(ckey == KeyCode.I && InventoryOpen == true && actionPerformed == false){
+                    InventoryMenu.SetActive(false);
+                    InventoryOpen = false;
+                    cameraMan.GetComponent<PlayerPOV>().enabled = true;
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    actionPerformed = true;
+                    Invoke("CommandCoolDown", 0.5f);
                 }
             }
         }

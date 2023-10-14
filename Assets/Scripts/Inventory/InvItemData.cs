@@ -11,4 +11,9 @@ public class InvItemData : ScriptableObject
     public string itemDisplayedName;
     [TextArea(4,4)]
     public string itemDisplayedDesc;
+    public string itemType;
+    public string itemDifficulty;
+    public float itemGoodFishChance;
+    public float itemBadFishChance;
+    public float itemRequiredPercent;
 }

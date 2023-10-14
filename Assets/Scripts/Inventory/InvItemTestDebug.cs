@@ -21,28 +21,28 @@ public class InvItemTestDebug : MonoBehaviour
             var ckey = commandKeys[i];
             if (Input.GetKey(ckey)) {
                 if (ckey == KeyCode.Alpha1){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/BasicTestItem.asset");
+                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Easy/Goldfish.asset");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 1)){
 
                     }
                 }
                 else if (ckey == KeyCode.Alpha2){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/BasicTestItem2.asset");
+                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Med/Barracuda.asset");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 1)){
 
                     }
                 }
                 else if (ckey == KeyCode.Alpha3){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/BasicTestItem.asset");
+                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Easy/Goldfish.asset");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 99)){
 
                     }
                 }
                 else if (ckey == KeyCode.Alpha4){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/BasicTestItem2.asset");
+                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Med/Barracuda.asset");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 99)){
                         
