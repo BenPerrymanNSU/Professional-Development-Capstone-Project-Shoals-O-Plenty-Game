@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEditor;
 
 public class ResultFishing : MonoBehaviour
 {
@@ -31,20 +32,32 @@ public class ResultFishing : MonoBehaviour
 
     public FishCollision resultGrabPercent;
     public GoFishScript difficultyPercent;
+    public GoFishScript fishResultData;
+    public GameObject container;
     public int numOfFishCaught = 0;
 
     public void CheckIfFishIsCaught(){
+        var inventory = container.GetComponent<InvItemContainer>();
         var currentPercent = resultGrabPercent.fishCatchPercentage;
         var neededPercent = difficultyPercent.requiredPercent;
+        var resultData = fishResultData.itemDataFishing;
 
         if(currentPercent == 1.00f){
             Debug.Log("Pure Victory!!!!!");
             numOfFishCaught++;
+            if (!inventory) return;
+            if (inventory.InvSystem2.AddToInvSlot(resultData, 1)){
+
+            }
             Invoke("TheGreatReset", 0.5f);
         }
         else if(currentPercent >= neededPercent){
             Debug.Log("Goodjob!");
             numOfFishCaught++;
+            if (!inventory) return;
+            if (inventory.InvSystem2.AddToInvSlot(resultData, 1)){
+
+            }
             Invoke("TheGreatReset", 0.5f);
         }
         else{

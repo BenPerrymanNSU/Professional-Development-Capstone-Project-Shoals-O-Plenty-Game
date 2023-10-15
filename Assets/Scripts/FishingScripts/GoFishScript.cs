@@ -35,7 +35,7 @@ public class GoFishScript : MonoBehaviour
     public InvItemData[] itemDataEasyFish;
     public InvItemData[] itemDataMedFish;
     public InvItemData[] itemDataHardFish;
-    private InvItemData itemDataFishing;
+    public InvItemData itemDataFishing;
 
     void Start(){
         FishKeyMovement.keepAnimatorControllerStateOnDisable = false;
