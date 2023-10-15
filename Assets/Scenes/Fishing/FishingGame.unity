@@ -203,6 +203,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64085964}
   m_CullTransparentMesh: 1
+--- !u!1 &174943396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174943399}
+  - component: {fileID: 174943398}
+  - component: {fileID: 174943397}
+  m_Layer: 0
+  m_Name: PlayerInventoryContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &174943397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174943396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876c0b65dc62bb04d9133e48f8817dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 174943396}
+--- !u!114 &174943398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174943396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62802ae03d50c04449e06f6b5a408124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invContainerSize: 20
+  invSystem:
+    invSlots: []
+--- !u!4 &174943399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174943396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 29.43587, y: -14.091651, z: 42.179005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &176513133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1429,6 +1490,8 @@ MonoBehaviour:
   exitButton: {fileID: 2119221320}
   resultGrabPercent: {fileID: 1005231804}
   difficultyPercent: {fileID: 1768708842}
+  fishResultData: {fileID: 1768708842}
+  container: {fileID: 174943396}
   numOfFishCaught: 0
 --- !u!1 &974433461
 GameObject:
@@ -3291,6 +3354,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a760427bd4f5c2449b9cd790efaf8c69, type: 2}
   - {fileID: 11400000, guid: e5c83bc7e79864c42aca145e38c014bf, type: 2}
   - {fileID: 11400000, guid: 020bf61b75f8dac4091e91b822fdfc22, type: 2}
+  itemDataFishing: {fileID: 0}
 --- !u!1001 &1795057054
 PrefabInstance:
   m_ObjectHideFlags: 0
