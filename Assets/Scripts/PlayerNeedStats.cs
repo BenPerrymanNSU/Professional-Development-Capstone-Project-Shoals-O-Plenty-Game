@@ -7,8 +7,26 @@ public class PlayerNeedStats : MonoBehaviour
     public float Hunger = 100f;
     public float Thirst = 100f;
     public float Rest = 100f;
+    public static float hungerTemp;
+    public static float thirstTemp;
+    public static float restTemp;
     public ClockScript clockTimer;
     private bool statLoweringCD = false;
+    private static bool firstActivation;
+
+    void Start(){
+        if(firstActivation == false){
+            Hunger = 100f;
+            Thirst = 100f;
+            Rest = 100f;
+            firstActivation = true;
+        }
+        else{
+            Hunger = hungerTemp;
+            Thirst = thirstTemp;
+            Rest = restTemp;
+        }
+    }
 
     void Update()
     {
@@ -21,5 +39,32 @@ public class PlayerNeedStats : MonoBehaviour
         else if(clockTimer.calcMinute == 15f || clockTimer.calcMinute == 45f ){
             statLoweringCD = false;
         }
+    }
+
+    void FixedUpdate(){
+        if(Hunger > 100f){
+            Hunger = 100f;
+        }
+        else if(Thirst > 100f){
+            Thirst = 100f;
+        }
+        else if(Rest > 100f){
+            Rest = 100f;
+        }
+        else if(Hunger < 0){
+            Hunger = 0;
+        }
+        else if(Thirst < 0){
+            Thirst = 0;
+        }
+        else if(Rest < 0){
+            Rest = 0;
+        }
+    }
+
+    void OnDestroy(){
+        hungerTemp = Hunger;
+        thirstTemp = Thirst;
+        restTemp = Rest;
     }
 }
