@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: Dolphinfish
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: decbe886ddc2552448ca8e4c512508e2, type: 3}
   itemStackablility: 99
   itemID: 5
   itemDisplayedName: Dolphinfish
-  itemDisplayedDesc: Rare Rare Rare
-  itemType: DebugFish
+  itemDisplayedDesc: Quiet the ego...
+  itemType: Medfish
   itemDifficulty: Med
   itemGoodFishChance: 0.3
   itemBadFishChance: 0.75

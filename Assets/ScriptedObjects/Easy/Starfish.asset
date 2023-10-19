@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: Starfish
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: 8cb8fa7f9ea30fe4ea81f4109405cea2, type: 3}
   itemStackablility: 99
   itemID: 2
   itemDisplayedName: Starfish
-  itemDisplayedDesc: A fish to test one's patience...
-  itemType: DebugFish
+  itemDisplayedDesc: If only they could see the stars above...
+  itemType: Easyfish
   itemDifficulty: Easy
   itemGoodFishChance: 0.55
   itemBadFishChance: 0.75

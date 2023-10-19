@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: Carp
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: 18fe54b5e87e41646830fa138dbacf87, type: 3}
   itemStackablility: 99
   itemID: 0
   itemDisplayedName: Carp
-  itemDisplayedDesc: A fish to test one's patience...
-  itemType: DebugFish
+  itemDisplayedDesc: Saltwater carp? Strange new world huh?
+  itemType: Easyfish
   itemDifficulty: Easy
   itemGoodFishChance: 0.55
   itemBadFishChance: 0.75

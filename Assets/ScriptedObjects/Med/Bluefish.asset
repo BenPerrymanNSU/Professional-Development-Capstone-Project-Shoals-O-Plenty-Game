@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: Bluefish
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 1e4f3c1374de8514b91325a199e0c012, type: 3}
   itemStackablility: 99
   itemID: 4
   itemDisplayedName: Bluefish
-  itemDisplayedDesc: Rare Rare Rare
-  itemType: DebugFish
+  itemDisplayedDesc: Average, but at least the name doesn't lie...
+  itemType: Medfish
   itemDifficulty: Med
   itemGoodFishChance: 0.3
   itemBadFishChance: 0.75
