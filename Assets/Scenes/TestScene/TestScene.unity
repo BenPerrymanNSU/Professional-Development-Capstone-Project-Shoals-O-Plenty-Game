@@ -2472,8 +2472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Menu: {fileID: 635323135}
   Reticle: {fileID: 1597290688}
-  yesButton: {fileID: 0}
-  noButton: {fileID: 0}
+  yesButton: {fileID: 952104275}
+  noButton: {fileID: 1106858253}
 --- !u!1 &598624872
 GameObject:
   m_ObjectHideFlags: 0
