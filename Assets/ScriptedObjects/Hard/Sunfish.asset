@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: Sunfish
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 3238dca1e9ea9fb4aa64b28298ba6dbd, type: 3}
+  itemIcon: {fileID: 21300000, guid: 65d898fcce76d054da8540adbaa028a1, type: 3}
   itemStackablility: 99
   itemID: 7
   itemDisplayedName: Sunfish
-  itemDisplayedDesc: asdfgdfsghfgs
-  itemType: DebugFish
+  itemDisplayedDesc: Large, flat, and strange looking...
+  itemType: Hardfish
   itemDifficulty: Hard
-  itemGoodFishChance: 0.1
-  itemBadFishChance: 0.6
+  itemGoodFishChance: 0.15
+  itemBadFishChance: 0.65
   itemRequiredPercent: 0.8

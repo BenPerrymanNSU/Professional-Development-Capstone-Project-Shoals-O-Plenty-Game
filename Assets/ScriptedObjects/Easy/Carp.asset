@@ -19,6 +19,6 @@ MonoBehaviour:
   itemDisplayedDesc: Saltwater carp? Strange new world huh?
   itemType: Easyfish
   itemDifficulty: Easy
-  itemGoodFishChance: 0.55
-  itemBadFishChance: 0.75
+  itemGoodFishChance: 0.5
+  itemBadFishChance: 0.8
   itemRequiredPercent: 0.3

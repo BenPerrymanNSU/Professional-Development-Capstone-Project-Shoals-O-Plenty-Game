@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
-  m_Name: Bluefish
+  m_Name: Rock
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 1e4f3c1374de8514b91325a199e0c012, type: 3}
+  itemIcon: {fileID: 21300000, guid: bc9081b76d42b0844a0b5a7636950003, type: 3}
   itemStackablility: 99
-  itemID: 4
-  itemDisplayedName: Bluefish
-  itemDisplayedDesc: Average, but at least the name doesn't lie...
-  itemType: Medfish
+  itemID: 10
+  itemDisplayedName: Rock
+  itemDisplayedDesc: Inedible, maybe it can be used for something?
+  itemType: Material
   itemDifficulty: Med
-  itemGoodFishChance: 0.35
-  itemBadFishChance: 0.75
-  itemRequiredPercent: 0.5
+  itemGoodFishChance: 0.4
+  itemBadFishChance: 0.8
+  itemRequiredPercent: 0.6

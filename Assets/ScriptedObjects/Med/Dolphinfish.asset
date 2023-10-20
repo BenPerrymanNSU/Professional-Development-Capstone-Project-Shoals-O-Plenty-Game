@@ -19,6 +19,6 @@ MonoBehaviour:
   itemDisplayedDesc: Quiet the ego...
   itemType: Medfish
   itemDifficulty: Med
-  itemGoodFishChance: 0.3
-  itemBadFishChance: 0.75
+  itemGoodFishChance: 0.45
+  itemBadFishChance: 0.85
   itemRequiredPercent: 0.5
