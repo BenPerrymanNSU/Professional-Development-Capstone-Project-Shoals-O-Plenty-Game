@@ -35,6 +35,7 @@ public class GoFishScript : MonoBehaviour
     public InvItemData[] itemDataEasyFish;
     public InvItemData[] itemDataMedFish;
     public InvItemData[] itemDataHardFish;
+    public InvItemData[] itemDataMaterial;
     public InvItemData itemDataFishing;
 
     void Start(){
@@ -42,6 +43,7 @@ public class GoFishScript : MonoBehaviour
         InvItemData[] itemDataEasyFish = new InvItemData[3];
         InvItemData[] itemDataMedFish = new InvItemData[3];
         InvItemData[] itemDataHardFish = new InvItemData[3];
+        InvItemData[] itemDataMaterial = new InvItemData[3];
     }
 
     public void GoFish(){
@@ -64,6 +66,8 @@ public class GoFishScript : MonoBehaviour
     private void FindFish(){
         StopCoroutine("Ellipsis");
         var fishPercentage = 0.85f;
+        var materialPercentage = 0.35f;
+
         var fishDifficultyEasy = 0.40f;
         var fishDifficultyMed = 0.75f;
         var fishDifficultyHard = 1.00f;
@@ -74,7 +78,6 @@ public class GoFishScript : MonoBehaviour
 
         if(Random.value < fishPercentage){
             Invoke("ModelActivation", 0f);
-            Debug.Log("Fish");
             var randomNum = Random.value;
             Debug.Log(randomNum);
 
@@ -120,6 +123,20 @@ public class GoFishScript : MonoBehaviour
                 FishChance.badFish = 1.00f;
                 requiredPercent = 1.00f;
             }
+            StartCoroutine(MoveFishKeys());
+        }
+        else if(Random.value < materialPercentage){
+            Invoke("ModelActivation", 0f);
+            var randomRange = Random.Range(0, 3);
+            Debug.Log(randomRange);
+            itemDataFishing = itemDataMaterial[randomRange];
+            Debug.Log(itemDataFishing.itemDisplayedName);
+            FishChance.goodFish = itemDataFishing.itemGoodFishChance;
+            Debug.Log(itemDataFishing.itemGoodFishChance);
+            FishChance.badFish = itemDataFishing.itemBadFishChance;
+            Debug.Log(itemDataFishing.itemBadFishChance);
+            requiredPercent = itemDataFishing.itemRequiredPercent;
+            Debug.Log(itemDataFishing.itemRequiredPercent);
             StartCoroutine(MoveFishKeys());
         }
         else{

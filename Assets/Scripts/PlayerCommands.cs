@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCommands : MonoBehaviour
 {
@@ -8,16 +9,28 @@ public class PlayerCommands : MonoBehaviour
     public GameObject interactableObjectIcon = null;
     public GameObject InventoryMenu;
     private GameObject cameraMan;
+    private Button exitButton;
+    private Button fishButton;
     public string ScriptName;
     private string ComponentName;
     private bool actionPerformed = false;
     private bool InventoryOpen = false;
+    private bool notInScene = true;
 
 
     void Start()
     {
         commandKeys = new KeyCode[] { KeyCode.E, KeyCode.I };
         cameraMan = GameObject.Find("PlayerTestCamera");
+        if(GameObject.Find("ExitFishingButton") != null){
+            if(GameObject.Find("ExitFishingButton").TryGetComponent<Button>(out Button uiExitButton)){
+                exitButton = uiExitButton; 
+            }
+            if(GameObject.Find("GoFishButton").TryGetComponent<Button>(out Button uiFishButton)){
+                fishButton = uiFishButton;
+            }
+            notInScene = false;
+        }
     }
 
     void FixedUpdate(){  
@@ -42,18 +55,30 @@ public class PlayerCommands : MonoBehaviour
                 if(ckey == KeyCode.I && InventoryOpen == false && actionPerformed == false){
                     InventoryMenu.SetActive(true);
                     InventoryOpen = true;
-                    cameraMan.GetComponent<PlayerPOV>().enabled = false;
-                    Cursor.visible = true;
-                    Cursor.lockState = CursorLockMode.Confined;
+                    if(cameraMan.TryGetComponent<PlayerPOV>(out PlayerPOV POV)){
+                        POV.enabled = false;
+                        Cursor.visible = true;
+                        Cursor.lockState = CursorLockMode.Confined;
+                    }
+                    else if(notInScene == false){
+                        exitButton.interactable = false;
+                        fishButton.interactable = false;
+                    }
                     actionPerformed = true;
                     Invoke("CommandCoolDown", 0.5f);
                 }
                 else if(ckey == KeyCode.I && InventoryOpen == true && actionPerformed == false){
                     InventoryMenu.SetActive(false);
                     InventoryOpen = false;
-                    cameraMan.GetComponent<PlayerPOV>().enabled = true;
-                    Cursor.visible = false;
-                    Cursor.lockState = CursorLockMode.Locked;
+                    if(cameraMan.TryGetComponent<PlayerPOV>(out PlayerPOV POV)){
+                        POV.enabled = true;
+                        Cursor.visible = false;
+                        Cursor.lockState = CursorLockMode.Locked;
+                    }
+                    else if(notInScene == false){
+                        exitButton.interactable = true;
+                        fishButton.interactable = true;
+                    }
                     actionPerformed = true;
                     Invoke("CommandCoolDown", 0.5f);
                 }
