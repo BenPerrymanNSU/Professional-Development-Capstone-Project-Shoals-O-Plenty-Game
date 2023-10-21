@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerNeedStats : MonoBehaviour
 {
     public float Hunger = 100f;
     public float Thirst = 100f;
     public float Rest = 100f;
+    private Image hungerBar;
+    private Image thirstBar;
+    private Image restBar;
     public static float hungerTemp;
     public static float thirstTemp;
     public static float restTemp;

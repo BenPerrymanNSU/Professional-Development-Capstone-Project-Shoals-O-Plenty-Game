@@ -25,6 +25,17 @@ public class InvItemSlot
         itemStackSize = itemAmount;
     }
 
+    public void AssignSlotItem(InvItemSlot invSlot){
+        if(itemData = invSlot.itemData2) PropagateItemStack(invSlot.itemStackSize);
+        else{
+            itemData = invSlot.itemData;
+            itemStackSize = 0;
+            PropagateItemStack(invSlot.itemStackSize);
+        }
+
+        
+    }
+
     public bool RemainingItemStackSpace(int itemAmountToProp, out int itemAmountSpaceLeft){
         itemAmountSpaceLeft = itemData2.itemStackablility - itemStackSize;
         return RemainingItemStackSpace(itemAmountToProp);
@@ -40,11 +51,27 @@ public class InvItemSlot
     }
 
     public void PropagateItemStack(int itemAmount){
+        if (itemStackSize == -1){
+            itemStackSize = 0;
+        }
         itemStackSize += itemAmount;
     }
 
     public void ReduceItemStack(int itemAmount){
         itemStackSize -= itemAmount;
+    }
+
+    public bool SeverStack(out InvItemSlot severedStack){
+        if(itemStackSize <= 1){
+            severedStack = null;
+            return false;
+        }
+
+        int halfStack = Mathf.RoundToInt(itemStackSize / 2);
+        ReduceItemStack(halfStack);
+        severedStack = new InvItemSlot(itemData, halfStack);
+        return true;
+
     }
 
     public void EmptyItemSlot(){
