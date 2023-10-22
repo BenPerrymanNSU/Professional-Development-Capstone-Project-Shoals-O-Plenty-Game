@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerNeedStats : MonoBehaviour
 {
     public float Hunger = 100f;
     public float Thirst = 100f;
     public float Rest = 100f;
-    private Image hungerBar;
-    private Image thirstBar;
-    private Image restBar;
+    private RectTransform hungerBar;
+    private RectTransform thirstBar;
+    private RectTransform restBar;
     public static float hungerTemp;
     public static float thirstTemp;
     public static float restTemp;
@@ -19,6 +18,9 @@ public class PlayerNeedStats : MonoBehaviour
     private static bool firstActivation;
 
     void Start(){
+        hungerBar = GameObject.Find("HungerBar").GetComponent<RectTransform>();
+        thirstBar = GameObject.Find("ThirstBar").GetComponent<RectTransform>();
+        restBar = GameObject.Find("RestBar").GetComponent<RectTransform>();
         if(firstActivation == false){
             Hunger = 100f;
             Thirst = 100f;
@@ -32,20 +34,20 @@ public class PlayerNeedStats : MonoBehaviour
         }
     }
 
-    void Update()
-    {
+    void FixedUpdate(){
         if((clockTimer.calcMinute == 30f || clockTimer.calcMinute == 59f) && statLoweringCD == false){
             Hunger -= 0.5f;
             Thirst -= 0.5f;
             Rest -= 0.5f;
+            hungerBar.offsetMin = new Vector2((hungerBar.offsetMin.x) + 1f, hungerBar.offsetMin.y);
+            thirstBar.offsetMin = new Vector2((thirstBar.offsetMin.x) + 1f, thirstBar.offsetMin.y);
+            restBar.offsetMin = new Vector2((restBar.offsetMin.x) + 1f, restBar.offsetMin.y);
             statLoweringCD = true;
         }
         else if(clockTimer.calcMinute == 15f || clockTimer.calcMinute == 45f ){
             statLoweringCD = false;
         }
-    }
 
-    void FixedUpdate(){
         if(Hunger > 100f){
             Hunger = 100f;
         }
