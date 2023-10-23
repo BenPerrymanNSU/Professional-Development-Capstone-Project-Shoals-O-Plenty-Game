@@ -7,12 +7,19 @@ public class PlayerNeedStats : MonoBehaviour
     public float Hunger = 100f;
     public float Thirst = 100f;
     public float Rest = 100f;
-    private RectTransform hungerBar;
-    private RectTransform thirstBar;
-    private RectTransform restBar;
-    public static float hungerTemp;
-    public static float thirstTemp;
-    public static float restTemp;
+    public RectTransform hungerBar;
+    public RectTransform thirstBar;
+    public RectTransform restBar;
+    private static float hungerTemp;
+    private static float thirstTemp;
+    private static float restTemp;
+    private static float maxBarTemp;
+    public float statHungerTracker;
+    public float statThirstTracker;
+    public float statRestTracker;
+    public static float statHungerTrackerTemp;
+    public static float statThirstTrackerTemp;
+    public static float statRestTrackerTemp;
     public ClockScript clockTimer;
     private bool statLoweringCD = false;
     private static bool firstActivation;
@@ -25,52 +32,133 @@ public class PlayerNeedStats : MonoBehaviour
             Hunger = 100f;
             Thirst = 100f;
             Rest = 100f;
+            statHungerTracker = 0;
+            statThirstTracker = 0;
+            statRestTracker = 0;
+            maxBarTemp = hungerBar.offsetMin.x;
             firstActivation = true;
+            Debug.Log("First Activation");
         }
         else{
             Hunger = hungerTemp;
             Thirst = thirstTemp;
             Rest = restTemp;
+            statHungerTracker = statHungerTrackerTemp;
+            statThirstTracker = statThirstTrackerTemp;
+            statRestTracker = statRestTrackerTemp;
+            SubtractFromStatBar(hungerBar, statHungerTracker);
+            SubtractFromStatBar(thirstBar, statThirstTracker);
+            SubtractFromStatBar(restBar, statRestTracker);
+
         }
     }
 
-    void FixedUpdate(){
+    void Update(){
         if((clockTimer.calcMinute == 30f || clockTimer.calcMinute == 59f) && statLoweringCD == false){
-            Hunger -= 0.5f;
-            Thirst -= 0.5f;
-            Rest -= 0.5f;
-            hungerBar.offsetMin = new Vector2((hungerBar.offsetMin.x) + 1f, hungerBar.offsetMin.y);
-            thirstBar.offsetMin = new Vector2((thirstBar.offsetMin.x) + 1f, thirstBar.offsetMin.y);
-            restBar.offsetMin = new Vector2((restBar.offsetMin.x) + 1f, restBar.offsetMin.y);
+            Hunger = SubtractFromStat(Hunger, 1f);
+            Thirst = SubtractFromStat(Thirst, 1f);
+            Rest = SubtractFromStat(Rest, 1f);
+            SubtractFromStatBar(hungerBar, 1f);
+            SubtractFromStatBar(thirstBar, 1f);
+            SubtractFromStatBar(restBar, 1f);
+            statHungerTracker = AddToTracker(statHungerTracker, 1f);
+            statThirstTracker = AddToTracker(statThirstTracker, 1f);
+            statRestTracker = AddToTracker(statRestTracker, 1f);
             statLoweringCD = true;
         }
         else if(clockTimer.calcMinute == 15f || clockTimer.calcMinute == 45f ){
             statLoweringCD = false;
         }
+    }
 
-        if(Hunger > 100f){
-            Hunger = 100f;
+    public float AddToStat(float needStat, float increaseStatAmount){
+        needStat += increaseStatAmount;
+        if(needStat > 100f){
+            needStat = 100f;
         }
-        else if(Thirst > 100f){
-            Thirst = 100f;
+        else if(needStat < 0){
+            needStat = 0;
         }
-        else if(Rest > 100f){
-            Rest = 100f;
+        return needStat;
+    }
+
+    public float SubtractFromStat(float needStat, float increaseStatAmount){
+        needStat -= increaseStatAmount;
+        if(needStat > 100f){
+            needStat = 100f;
         }
-        else if(Hunger < 0){
-            Hunger = 0;
+        else if(needStat < 0){
+            needStat = 0;
         }
-        else if(Thirst < 0){
-            Thirst = 0;
+        return needStat;
+    }
+
+    public void AddToStatBar(RectTransform needStatBar, float addStatAmount){
+        needStatBar.offsetMin = new Vector2(needStatBar.offsetMin.x, needStatBar.offsetMin.y);
+        needStatBar.offsetMin = new Vector2((needStatBar.offsetMin.x) - addStatAmount, needStatBar.offsetMin.y);
+        if(needStatBar.offsetMin.x < maxBarTemp){
+            needStatBar.offsetMin = new Vector2(maxBarTemp, needStatBar.offsetMin.y);
         }
-        else if(Rest < 0){
-            Rest = 0;
+        else if(needStatBar.offsetMin.x > 1806.667f){
+            needStatBar.offsetMin = new Vector2(1806.667f, needStatBar.offsetMin.y);
+        }
+
+    }
+
+    public void SubtractFromStatBar(RectTransform needStatBar, float subStatAmount){
+        needStatBar.offsetMin = new Vector2(needStatBar.offsetMin.x, needStatBar.offsetMin.y);
+        needStatBar.offsetMin = new Vector2((needStatBar.offsetMin.x) + subStatAmount, needStatBar.offsetMin.y);
+        if(needStatBar.offsetMin.x < maxBarTemp){
+            needStatBar.offsetMin = new Vector2(maxBarTemp, needStatBar.offsetMin.y);
+        }
+        else if(needStatBar.offsetMin.x > 1806.667f){
+            needStatBar.offsetMin = new Vector2(1806.667f, needStatBar.offsetMin.y);
         }
     }
 
+    public float AddToTracker(float needTracker, float increaseTracker){
+        needTracker += increaseTracker;
+        if(needTracker > 100f){
+            needTracker = 100f;
+        }
+        else if(needTracker < 0){
+            needTracker = 0;
+        }
+        return needTracker;
+    }
+
+    public float SubtractFromTracker(float needTracker, float increaseTracker){
+        needTracker -= increaseTracker;
+        if(needTracker > 100f){
+            needTracker = 100f;
+        }
+        else if(needTracker < 0){
+            needTracker = 0;
+        }
+        return needTracker;
+    }
+
+
+
+
+/*
+    public float TrackerCheck(RectTransform needStatBar, float statTracker){
+        if(statTracker >= 0){
+            statTracker = SubtractFromStatBar(needStatBar, statTracker, statTracker);
+        }
+        else if(statTracker < 0){
+            statTracker = AddToStatBar(needStatBar, statTracker, statTracker);
+        }
+        Debug.Log(statTracker);
+        return statTracker;
+    }
+*/
     void OnDestroy(){
         hungerTemp = Hunger;
         thirstTemp = Thirst;
         restTemp = Rest;
+        statHungerTrackerTemp = statHungerTracker;
+        statThirstTrackerTemp = statThirstTracker;
+        statRestTrackerTemp = statRestTracker;
     }
 }

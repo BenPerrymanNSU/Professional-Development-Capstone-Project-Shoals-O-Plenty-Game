@@ -42,9 +42,15 @@ public class SleepFunctionScript : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine("Transition", 0f);
-        playerNStats.Hunger -= 30f;
-        playerNStats.Thirst -= 30f;
-        playerNStats.Rest += 60f;
+        playerNStats.Hunger = playerNStats.SubtractFromStat(playerNStats.Hunger, 30f);
+        playerNStats.Thirst = playerNStats.SubtractFromStat(playerNStats.Thirst, 30f);
+        playerNStats.Rest = playerNStats.AddToStat(playerNStats.Rest, 60f);
+        playerNStats.SubtractFromStatBar(playerNStats.hungerBar, 30f);
+        playerNStats.SubtractFromStatBar(playerNStats.thirstBar, 30f);
+        playerNStats.AddToStatBar(playerNStats.restBar, 60f);
+        playerNStats.statHungerTracker = playerNStats.AddToTracker(playerNStats.statHungerTracker, 30f);
+        playerNStats.statThirstTracker = playerNStats.AddToTracker(playerNStats.statThirstTracker, 30f);
+        playerNStats.statRestTracker = playerNStats.SubtractFromTracker(playerNStats.statRestTracker, 60f);
         CameraController.GetComponent<PlayerPOV>().enabled = true;
     }
 
