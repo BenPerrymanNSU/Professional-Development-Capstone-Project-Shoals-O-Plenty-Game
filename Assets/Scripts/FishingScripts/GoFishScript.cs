@@ -23,6 +23,7 @@ public class GoFishScript : MonoBehaviour
     public GameObject Bobber;
     public Animator FishKeyMovement;
 
+    public PlayerNeedStats playerNStats;
     public GameObject ellipsis1;
     public GameObject ellipsis2;
     public GameObject ellipsis3;
@@ -47,6 +48,9 @@ public class GoFishScript : MonoBehaviour
     }
 
     public void GoFish(){
+        playerNStats.Hunger = playerNStats.SubtractFromStat(playerNStats.hungerBar, playerNStats.Hunger, 5f);
+        playerNStats.Thirst = playerNStats.SubtractFromStat(playerNStats.thirstBar, playerNStats.Thirst, 5f);
+        playerNStats.Rest = playerNStats.SubtractFromStat(playerNStats.restBar, playerNStats.Rest, 5f);
         Line.SetActive(true);
         Bobber.SetActive(true);
         goFishButton.interactable = false;
