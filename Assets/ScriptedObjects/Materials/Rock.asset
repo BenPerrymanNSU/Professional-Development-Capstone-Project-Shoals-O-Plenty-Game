@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: bc9081b76d42b0844a0b5a7636950003, type: 3}
+  itemIcon: {fileID: 21300000, guid: 7edb12aac4005cb48884d4111843209e, type: 3}
   itemStackablility: 99
   itemID: 10
   itemDisplayedName: Rock
