@@ -24,7 +24,7 @@ public class InvScript_UI : MonoBehaviour
     }
 
     public void UpdateUISlot(InvItemSlot slot){
-        if(slot.itemData2 != null){
+        if(slot.itemData2 != null && slot.itemData2.itemIcon != null){
             itemUISprite.sprite = slot.itemData2.itemIcon;
             itemUISprite.color = Color.white;
 

@@ -10,17 +10,38 @@ public class CursorControl1 : MonoBehaviour
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        CameraController.GetComponent<PlayerPOV>().enabled = false;
-        CameraController.GetComponent<PlayerMovement>().enabled = false;
-        CameraController.GetComponentInChildren<PlayerCommands>().enabled = false;
+        if(CameraController.TryGetComponent<PlayerPOV>(out PlayerPOV POV)){
+            POV.enabled = false;
+        }
+        if(CameraController.TryGetComponent<PlayerMovement>(out PlayerMovement PM)){
+            PM.enabled = false;
+        }
+        if(CameraController.TryGetComponent<PlayerCommands>(out PlayerCommands PC)){
+            PC.enabled = false;
+        }
     }
 
     public void RegainPlayerMovement(){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        CameraController.GetComponent<PlayerPOV>().enabled = true;
-        CameraController.GetComponent<PlayerMovement>().enabled = true;
-        CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
+        if(CameraController.TryGetComponent<PlayerPOV>(out PlayerPOV POV)){
+            POV.enabled = true;
+        }
+        if(CameraController.TryGetComponent<PlayerMovement>(out PlayerMovement PM)){
+            PM.enabled = true;
+        }
+        if(CameraController.TryGetComponent<PlayerCommands>(out PlayerCommands PC)){
+            PC.enabled = true;
+        }
+    }
+
+    public void RegainPlayerMovementFishing(){
+        GameObject CameraController = GameObject.Find("PlayerTestCamera");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        if(CameraController.TryGetComponent<PlayerCommands>(out PlayerCommands PC)){
+            PC.enabled = true;
+        }
     }
 }

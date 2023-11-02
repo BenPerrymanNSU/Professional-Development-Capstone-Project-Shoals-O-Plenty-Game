@@ -7,20 +7,13 @@ using UnityEditor;
 public class ResultFishing : MonoBehaviour
 {
     public FishKeyMover fishMove;
+    public Animator FishKeyMovement;
+    public Animator FishingRodMovement;
     public FishCollision fishCol;
     public PlayerBobberController bobberPlayer;
     public GameObject fishingUI;
     public GameObject PlayerBobber;
-    public GameObject fishingKey0;
-    public GameObject fishingKey1;
-    public GameObject fishingKey2;
-    public GameObject fishingKey3;
-    public GameObject fishingKey4;
-    public GameObject fishingKey5;
-    public GameObject fishingKey6;
-    public GameObject fishingKey7;
-    public GameObject fishingKey8;
-    public GameObject fishingKey9;
+    public GameObject fishingKeys;
     public GameObject Line;
     public GameObject Bobber;
     private GameObject Key2;
@@ -37,6 +30,9 @@ public class ResultFishing : MonoBehaviour
     public int numOfFishCaught = 0;
 
     public void CheckIfFishIsCaught(){
+        FishingRodMovement.SetBool("FishingRodFlingFinish", false);
+        FishingRodMovement.SetBool("FishingBegin", false);
+        FishingRodMovement.SetBool("FishingGameOver", true);
         var inventory = container.GetComponent<InvItemContainer>();
         var currentPercent = resultGrabPercent.fishCatchPercentage;
         var neededPercent = difficultyPercent.requiredPercent;
@@ -69,6 +65,9 @@ public class ResultFishing : MonoBehaviour
 
     private void TheGreatReset(){
         Debug.Log("Reset!");
+        GameObject CameraController = GameObject.Find("PlayerTestCamera");
+        CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
+        FishKeyMovement.keepAnimatorControllerStateOnDisable = false;
         FishPercentageText.gameObject.SetActive(false);
         readyText.text = "Ready?";
         readyText.gameObject.SetActive(false);
@@ -97,16 +96,9 @@ public class ResultFishing : MonoBehaviour
         PlayerBobber.GetComponent<PlayerBobberController>().enabled = false;
         PlayerBobber.transform.position = new Vector3(4.50037193f,1.85964489f,2.80498505f);
         PlayerBobber.SetActive(false);
-        fishingKey0.SetActive(false);
-        fishingKey1.SetActive(false);
-        fishingKey2.SetActive(false);
-        fishingKey3.SetActive(false);
-        fishingKey4.SetActive(false);
-        fishingKey5.SetActive(false);
-        fishingKey6.SetActive(false);
-        fishingKey7.SetActive(false);
-        fishingKey8.SetActive(false);
-        fishingKey9.SetActive(false);
+        fishingKeys.SetActive(false);
+        FishingRodMovement.SetBool("FishingGameOver", false);
+        FishingRodMovement.Play("Base Layer.FishingIdle", 0, 0f);
     }
 
 }

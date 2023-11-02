@@ -28,10 +28,9 @@ public class FishKeyMover : MonoBehaviour
     public int minimumGoodFish = 10;
     public bool minimumGoodFishCleared = false;
 
-    public void placeFishTokens()
-    {
+    public void placeFishTokens() {
         Debug.Log("Started");
-       for (int i = 0; i < numberOfKeys; i++){
+        for (int i = 0; i < numberOfKeys; i++){
             Key = GameObject.Find("FishKey" + i.ToString());
             fishKeys[i] = Key;
             var randSlot = Random.Range(1, 4);
@@ -65,18 +64,6 @@ public class FishKeyMover : MonoBehaviour
             }
             minimumGoodFishCleared = false;
        }
-       /*
-       fishKeys[0].transform.position = fishKeyLocations[0];
-       fishKeys[1].transform.position = fishKeyLocations[1];
-       fishKeys[2].transform.position = fishKeyLocations[2];
-       fishKeys[3].transform.position = fishKeyLocations[3];
-       fishKeys[4].transform.position = fishKeyLocations[4];
-       fishKeys[5].transform.position = fishKeyLocations[5];
-       fishKeys[6].transform.position = fishKeyLocations[6];
-       fishKeys[7].transform.position = fishKeyLocations[7];
-       fishKeys[8].transform.position = fishKeyLocations[8];
-       fishKeys[9].transform.position = fishKeyLocations[9];
-       */
        Debug.Log("Good: " + countGoodFish);
        Debug.Log("Bad: " + countBadFish);
     }

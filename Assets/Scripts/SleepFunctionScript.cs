@@ -20,6 +20,7 @@ public class SleepFunctionScript : MonoBehaviour
             Menu.gameObject.SetActive(true);
             Reticle.gameObject.SetActive(false);
             CameraController.GetComponent<PlayerPOV>().enabled = false;
+            CameraController.GetComponentInChildren<PlayerCommands>().enabled = false;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             called = false;
@@ -30,6 +31,7 @@ public class SleepFunctionScript : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             CameraController.GetComponent<PlayerPOV>().enabled = true;
+            CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
             called = false;
         }
         
@@ -37,6 +39,7 @@ public class SleepFunctionScript : MonoBehaviour
 
     public void YesButton(bool called){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
+        CameraController.GetComponentInChildren<PlayerCommands>().enabled = false;
         Menu.gameObject.SetActive(false);
         Reticle.gameObject.SetActive(true);
         Cursor.visible = false;
@@ -46,6 +49,7 @@ public class SleepFunctionScript : MonoBehaviour
         playerNStats.Thirst = playerNStats.SubtractFromStat(playerNStats.thirstBar, playerNStats.Thirst, 30f);
         playerNStats.Rest = playerNStats.AddToStat(playerNStats.restBar, playerNStats.Rest, 60f);
         CameraController.GetComponent<PlayerPOV>().enabled = true;
+        CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
     }
 
     public void NoButton(bool called){
@@ -55,6 +59,7 @@ public class SleepFunctionScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         CameraController.GetComponent<PlayerPOV>().enabled = true;
+        CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
         called = false;
     }
 

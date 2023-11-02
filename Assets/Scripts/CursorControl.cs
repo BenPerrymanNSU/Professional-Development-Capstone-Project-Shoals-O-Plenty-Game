@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CursorControl : MonoBehaviour
 {
+
     void Start(){
+        GameObject CameraController = GameObject.Find("PlayerTestCamera");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        CameraController.GetComponent<PlayerPOV>().enabled = false;
+        CameraController.GetComponent<PlayerMovement>().enabled = false;
     }
 }
