@@ -20,7 +20,8 @@ public class GoFishScript : MonoBehaviour
     public GameObject ellipsis2;
     public GameObject ellipsis3;
     public Text FishPercentageText;
-    public Text readyText;
+    public Image readyGoImage;
+    public Sprite readyGoSprite;
     public Button goFishButton;
     public Button exitButton;
 
@@ -135,7 +136,7 @@ public class GoFishScript : MonoBehaviour
         PlayerBobber.SetActive(true);
         FishChance.placeFishTokens();
         FishPercentageText.gameObject.SetActive(true);
-        readyText.gameObject.SetActive(true);
+        readyGoImage.gameObject.SetActive(true);
     }
 
     private IEnumerator MoveFishKeys(){
@@ -144,10 +145,9 @@ public class GoFishScript : MonoBehaviour
         PlayerBobber.GetComponent<PlayerBobberController>().enabled = true;
         FishKeyMovement.SetBool("FishBool", true);
         FishKeyMovement.Update(0f);
-        yield return new WaitForSeconds(0.5f);
-        readyText.text = "GO";
+        readyGoImage.sprite = readyGoSprite;
         yield return new WaitForSeconds(1f);
-        readyText.gameObject.SetActive(false);
+        readyGoImage.gameObject.SetActive(false);
         FishKeyMovement.SetBool("FishBool", false);
     }
 }

@@ -12,7 +12,7 @@ public class FishCollision : MonoBehaviour
     public bool fishFound = false;
 
     void Update(){
-        fishPercentageText.text = (fishCatchPercentage * 100).ToString() + "%";
+        fishPercentageText.text = (Mathf.Round(fishCatchPercentage * 100)).ToString() + "%";
 
         if(fishCatchPercentage < 0.00f){
             fishCatchPercentage = 0.00f;

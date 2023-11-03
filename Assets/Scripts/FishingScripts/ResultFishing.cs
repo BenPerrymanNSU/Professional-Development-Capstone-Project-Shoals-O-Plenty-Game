@@ -19,7 +19,8 @@ public class ResultFishing : MonoBehaviour
     private GameObject Key2;
 
     public Text FishPercentageText;
-    public Text readyText;
+    public Image readyGoImage;
+    public Sprite readyGoSprite;
     public Button goFishButton;
     public Button exitButton;
 
@@ -69,8 +70,8 @@ public class ResultFishing : MonoBehaviour
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
         FishKeyMovement.keepAnimatorControllerStateOnDisable = false;
         FishPercentageText.gameObject.SetActive(false);
-        readyText.text = "Ready?";
-        readyText.gameObject.SetActive(false);
+        readyGoImage.sprite = readyGoSprite;
+        readyGoImage.gameObject.SetActive(false);
         Line.SetActive(false);
         Bobber.SetActive(false);
         goFishButton.interactable = true;
