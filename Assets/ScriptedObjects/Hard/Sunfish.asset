@@ -22,3 +22,7 @@ MonoBehaviour:
   itemGoodFishChance: 0.15
   itemBadFishChance: 0.65
   itemRequiredPercent: 0.8
+  itemEdibility: 1
+  itemRaw: 1
+  itemHungerSatiation: 15
+  itemThirstSatiation: 0
