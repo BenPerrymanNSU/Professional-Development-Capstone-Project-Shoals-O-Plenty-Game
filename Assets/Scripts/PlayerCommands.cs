@@ -9,13 +9,13 @@ public class PlayerCommands : MonoBehaviour
     public GameObject interactableObjectIcon = null;
     public GameObject InventoryMenu;
     private GameObject cameraMan;
-    private Button exitButton;
-    private Button fishButton;
+    public Button exitButton;
+    public Button fishButton;
     public string ScriptName;
     private string ComponentName;
-    private bool actionPerformed = false;
-    private bool InventoryOpen = false;
-    private bool notInScene = true;
+    public bool actionPerformed = false;
+    public bool InventoryOpen = false;
+    public bool notInScene = true;
 
 
     void Start()

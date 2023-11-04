@@ -12,7 +12,7 @@ public class FishingFunctionScript : MonoBehaviour
     public Button noButton;
     //private bool ButtonClicked;
 
-    void ScriptFunction(bool called){
+    public void ScriptFunction(bool called){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         if (called == true){
             //Debug.Log("Hello!!!!");

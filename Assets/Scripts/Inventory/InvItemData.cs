@@ -16,4 +16,8 @@ public class InvItemData : ScriptableObject
     public float itemGoodFishChance;
     public float itemBadFishChance;
     public float itemRequiredPercent;
+    public bool itemEdibility;
+    public bool itemRaw;
+    public float itemHungerSatiation;
+    public float itemThirstSatiation;
 }

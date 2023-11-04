@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenuFishing : MonoBehaviour
 {
     private GameObject CameraController;
-    public GameObject sleepMenu;
-    public SleepFunctionScript sleepFunc;
-    public GameObject fishinMenu;
-    public FishingFunctionScript fishFunc;
     public GameObject inventoryMenu;
     public PlayerCommands playerComs;
-    //public Image campfireMenu;
+    public Button exitButton;
+    public Button fishButton;
     private bool Paused = false;
 
     void Start(){
@@ -36,16 +33,10 @@ public class PauseMenu : MonoBehaviour
     }
 
     void PauseGame(){
-
-        if(sleepMenu.activeSelf == true){
-            sleepFunc.ScriptFunction(false);
-            sleepMenu.SetActive(false);
-        }
-        else if(fishinMenu.activeSelf == true){
-            fishFunc.ScriptFunction(false);
-            fishinMenu.SetActive(false);
-        }
-        else if(inventoryMenu.activeSelf == true){
+        Debug.Log("Paused");
+        exitButton.interactable = false;
+        fishButton.interactable = false;
+        if(inventoryMenu.activeSelf == true){
             playerComs.InventoryOpen = false;
             playerComs.actionPerformed = false;
             playerComs.notInScene = false;
@@ -55,18 +46,18 @@ public class PauseMenu : MonoBehaviour
         Paused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        CameraController.GetComponent<PlayerPOV>().enabled = false;
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = false;
         Time.timeScale = 0;
     }
 
     public void ResumeGame(){
+        Debug.Log("Resumed");
         Paused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        CameraController.GetComponent<PlayerPOV>().enabled = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        exitButton.interactable = true;
+        fishButton.interactable = true;
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
         Time.timeScale = 1;
-        
     }
 }
