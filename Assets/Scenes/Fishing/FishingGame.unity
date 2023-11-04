@@ -2011,6 +2011,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &523865802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5469173433711607791, guid: bf1d0279ba8e64447bea6eeb8999a4e7, type: 3}
+  m_PrefabInstance: {fileID: 1088832355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &531823380
 GameObject:
   m_ObjectHideFlags: 0
@@ -6299,6 +6304,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444112775}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1457778112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 354284066332160564, guid: bf1d0279ba8e64447bea6eeb8999a4e7, type: 3}
+  m_PrefabInstance: {fileID: 1088832355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11591acc22f1ddc47b56bf9344408492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1481006494
 GameObject:
   m_ObjectHideFlags: 0
@@ -7706,6 +7722,7 @@ MonoBehaviour:
   mouseInvSlot:
     itemData: {fileID: 0}
     itemStackSize: -1
+  playerNStats: {fileID: 1770771809}
 --- !u!4 &1716381783
 Transform:
   m_ObjectHideFlags: 0
@@ -8040,12 +8057,28 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3947474945118338964, guid: bf1d0279ba8e64447bea6eeb8999a4e7, type: 3}
   m_PrefabInstance: {fileID: 1088832355}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 523865802}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2aa5f7b15c45db848bc5bf09885c2112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1770771810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523865802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12d161c4a84cbe4997a0bfe62d5ad14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryMenu: {fileID: 2098250426}
+  playerComs: {fileID: 1457778112}
+  exitButton: {fileID: 2119221320}
+  fishButton: {fileID: 262022375}
 --- !u!1001 &1795057054
 PrefabInstance:
   m_ObjectHideFlags: 0
