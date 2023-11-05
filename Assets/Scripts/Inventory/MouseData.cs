@@ -65,7 +65,7 @@ public class MouseData : MonoBehaviour
             if(mouseInvSlot.itemData2.itemRaw == true){
                 var randomSickNum = Random.value;
                 if(randomSickNum >= 0.85f){
-                    if(mouseInvSlot.itemStackSize2 > 1){
+                    if(mouseInvSlot.itemStackSize2 >= 1){
                         mouseInvSlot.ReduceItemStack(1);
                         UpdateMouseInvSlotInfo(mouseInvSlot);
                         playerNStats.Hunger = playerNStats.SubtractFromStat(playerNStats.hungerBar, playerNStats.Hunger, (5f) * fishDiffMult);
@@ -75,9 +75,13 @@ public class MouseData : MonoBehaviour
                     else{
                         EmptyMouseSlot();
                     }
+
+                    if(mouseInvSlot.itemStackSize2 == 0){
+                        EmptyMouseSlot();
+                    }
                 }
                 else{
-                    if(mouseInvSlot.itemStackSize2 > 1){
+                    if(mouseInvSlot.itemStackSize2 >= 1){
                         mouseInvSlot.ReduceItemStack(1);
                         UpdateMouseInvSlotInfo(mouseInvSlot);
                         playerNStats.Hunger = playerNStats.AddToStat(playerNStats.hungerBar, playerNStats.Hunger, mouseInvSlot.itemData2.itemHungerSatiation);
@@ -86,16 +90,24 @@ public class MouseData : MonoBehaviour
                     else{
                         EmptyMouseSlot();
                     }
+
+                    if(mouseInvSlot.itemStackSize2 == 0){
+                        EmptyMouseSlot();
+                    }
                 }
             }
             else{
-                if(mouseInvSlot.itemStackSize2 > 1){
+                if(mouseInvSlot.itemStackSize2 >= 1){
                     mouseInvSlot.ReduceItemStack(1);
                     UpdateMouseInvSlotInfo(mouseInvSlot);
                     playerNStats.Hunger = playerNStats.AddToStat(playerNStats.hungerBar, playerNStats.Hunger, mouseInvSlot.itemData2.itemHungerSatiation);
                     playerNStats.Thirst = playerNStats.AddToStat(playerNStats.thirstBar, playerNStats.Thirst, mouseInvSlot.itemData2.itemThirstSatiation);
                 }
                 else{
+                    EmptyMouseSlot();
+                }
+
+                if(mouseInvSlot.itemStackSize2 == 0){
                     EmptyMouseSlot();
                 }
             }

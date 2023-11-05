@@ -25,6 +25,7 @@ public class InvScript_UI : MonoBehaviour
 
     public void UpdateUISlot(InvItemSlot slot){
         if(slot.itemData2 != null && slot.itemData2.itemIcon != null){
+            // Potential Error Here with destroying type Image, no idea why...
             itemUISprite.sprite = slot.itemData2.itemIcon;
             itemUISprite.color = Color.white;
 
