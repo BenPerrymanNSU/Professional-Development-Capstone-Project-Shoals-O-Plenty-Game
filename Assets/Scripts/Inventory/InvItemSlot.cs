@@ -59,6 +59,9 @@ public class InvItemSlot
 
     public void ReduceItemStack(int itemAmount){
         itemStackSize -= itemAmount;
+        if(itemStackSize == 0){
+            EmptyItemSlot();
+        }
     }
 
     public bool SeverStack(out InvItemSlot severedStack){
@@ -78,4 +81,5 @@ public class InvItemSlot
         itemData = null;
         itemStackSize = -1; 
     }
+
 }

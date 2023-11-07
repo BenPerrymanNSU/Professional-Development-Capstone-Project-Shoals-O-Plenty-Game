@@ -50,4 +50,5 @@ public class InvItemSystem
         emptySlot = InvLSlots.FirstOrDefault(i => i.itemData2 == null);
         return emptySlot == null ? false : true;
     }
+
 }
