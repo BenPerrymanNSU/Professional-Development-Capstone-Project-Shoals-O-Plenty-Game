@@ -17,7 +17,7 @@ MonoBehaviour:
   itemID: 0
   itemDisplayedName: Carp
   itemDisplayedDesc: Saltwater carp? Strange new world huh?
-  itemType: Easyfish
+  itemType: Fish
   itemDifficulty: Easy
   itemGoodFishChance: 0.5
   itemBadFishChance: 0.8

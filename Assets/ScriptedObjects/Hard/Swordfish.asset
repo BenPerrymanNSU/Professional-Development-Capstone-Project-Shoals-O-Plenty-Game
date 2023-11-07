@@ -17,7 +17,7 @@ MonoBehaviour:
   itemID: 8
   itemDisplayedName: Swordfish
   itemDisplayedDesc: A tough fight for a modest weapon...
-  itemType: Hardfish
+  itemType: Fish
   itemDifficulty: Hard
   itemGoodFishChance: 0.1
   itemBadFishChance: 0.6

@@ -17,7 +17,7 @@ MonoBehaviour:
   itemID: 4
   itemDisplayedName: Bluefish
   itemDisplayedDesc: Average, but at least the name doesn't lie...
-  itemType: Medfish
+  itemType: Fish
   itemDifficulty: Med
   itemGoodFishChance: 0.35
   itemBadFishChance: 0.75

@@ -17,7 +17,7 @@ MonoBehaviour:
   itemID: 1
   itemDisplayedName: Goldfish
   itemDisplayedDesc: Far from home...
-  itemType: Easyfish
+  itemType: Fish
   itemDifficulty: Easy
   itemGoodFishChance: 0.5
   itemBadFishChance: 0.75

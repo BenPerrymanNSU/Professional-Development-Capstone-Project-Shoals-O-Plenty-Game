@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
-  m_Name: Starfish
+  m_Name: CookedGoldfish
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 8cb8fa7f9ea30fe4ea81f4109405cea2, type: 3}
-  itemStackablility: 99
-  itemID: 2
-  itemDisplayedName: Starfish
-  itemDisplayedDesc: If only they could see the stars above...
-  itemType: Fish
+  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemStackablility: 1
+  itemID: 14
+  itemDisplayedName: Cooked Goldfish
+  itemDisplayedDesc: Not much meat, but it'll have to do...
+  itemType: Consumable
   itemDifficulty: Easy
-  itemGoodFishChance: 0.55
-  itemBadFishChance: 0.75
-  itemRequiredPercent: 0.3
+  itemGoodFishChance: 0
+  itemBadFishChance: 0
+  itemRequiredPercent: 0
   itemEdibility: 1
-  itemRaw: 1
-  itemHungerSatiation: 3
+  itemRaw: 0
+  itemHungerSatiation: 2
   itemThirstSatiation: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   itemID: 6
   itemDisplayedName: Bluefin Tuna
   itemDisplayedDesc: Tuna, Tuna, Tuna...
-  itemType: Hardfish
+  itemType: Fish
   itemDifficulty: Hard
   itemGoodFishChance: 0.2
   itemBadFishChance: 0.6

@@ -17,7 +17,7 @@ MonoBehaviour:
   itemID: 3
   itemDisplayedName: Barracuda
   itemDisplayedDesc: Won't win any beauty contests...
-  itemType: Medfish
+  itemType: Fish
   itemDifficulty: Med
   itemGoodFishChance: 0.35
   itemBadFishChance: 0.9

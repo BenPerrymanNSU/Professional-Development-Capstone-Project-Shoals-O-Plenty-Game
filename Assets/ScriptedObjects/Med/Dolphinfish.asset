@@ -17,7 +17,7 @@ MonoBehaviour:
   itemID: 5
   itemDisplayedName: Dolphinfish
   itemDisplayedDesc: Quiet the ego...
-  itemType: Medfish
+  itemType: Fish
   itemDifficulty: Med
   itemGoodFishChance: 0.45
   itemBadFishChance: 0.85

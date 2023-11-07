@@ -17,7 +17,7 @@ MonoBehaviour:
   itemID: 7
   itemDisplayedName: Sunfish
   itemDisplayedDesc: Large, flat, and strange looking...
-  itemType: Hardfish
+  itemType: Fish
   itemDifficulty: Hard
   itemGoodFishChance: 0.15
   itemBadFishChance: 0.65
