@@ -11,7 +11,7 @@ public class InvItemTestDebug : MonoBehaviour
 
     void Start()
     {
-        commandKeys = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4};
+        commandKeys = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
     }
 
     void FixedUpdate(){  
@@ -43,6 +43,13 @@ public class InvItemTestDebug : MonoBehaviour
                 }
                 else if (ckey == KeyCode.Alpha4){
                     itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Med/Barracuda.asset");
+                    if (!inventory) return;
+                    if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 99)){
+                        
+                    }
+                }
+                else if (ckey == KeyCode.Alpha5){
+                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Hard/Swordfish.asset");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 99)){
                         

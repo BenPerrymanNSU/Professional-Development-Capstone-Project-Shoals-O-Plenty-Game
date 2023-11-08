@@ -7,7 +7,7 @@ public class InvScript_UI : MonoBehaviour
     [SerializeField] private Image itemUISprite;
     [SerializeField] private TextMeshProUGUI itemUICount;
     [SerializeField] private InvItemSlot selectedUISlot;
-    private Button slotButton;
+    public Button slotButton;
     public InvItemSlot assignedUISlot => selectedUISlot;
     public InvScript_UIDisplay ParentDisplay {get; private set;}
 
@@ -24,13 +24,17 @@ public class InvScript_UI : MonoBehaviour
     }
 
     public void UpdateUISlot(InvItemSlot slot){
-        if(slot.itemData2 != null && slot.itemData2.itemIcon != null){
-            // Potential Error Here with destroying type Image, no idea why...
-            itemUISprite.sprite = slot.itemData2.itemIcon;
-            itemUISprite.color = Color.white;
-
-            if(slot.itemStackSize2 > 1) itemUICount.text = slot.itemStackSize2.ToString();
-            else itemUICount.text = "";
+        if(slot.itemData2 != null){
+            if(slot.itemData2.itemIcon != null){
+                itemUISprite.sprite = slot.itemData2.itemIcon;
+                itemUISprite.color = Color.white;
+                if(slot.itemStackSize2 > 1){
+                    itemUICount.text = slot.itemStackSize2.ToString();
+                }
+                else{
+                    itemUICount.text = "";
+                }
+            }
         }
         else{
             EmptyUISlot();

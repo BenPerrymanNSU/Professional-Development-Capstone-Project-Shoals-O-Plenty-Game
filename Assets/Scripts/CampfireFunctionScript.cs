@@ -28,9 +28,11 @@ public class CampfireFunctionScript : MonoBehaviour
     private InvItemData consumableItemData;
     public InvItemContainer playerInventory;
     public InvScript_UI playerInventoryUI;
+    public InvScript_UIDisplay playerInvDisUI;
     public FollowingCanvas fCanvas;
-    public string buttonString;
-    public string fishName;
+    private string buttonString;
+    private string fishName;
+    private string scriptableObjectPath;
     public GameObject container;
     public GameObject worldCanvas;
     public int sliderVal;
@@ -75,8 +77,8 @@ public class CampfireFunctionScript : MonoBehaviour
 
     public void CookButtonFunc(bool called){
         Menu.gameObject.SetActive(false);
-        cookingMenu.gameObject.SetActive(true);
         CookableFishTest();
+        cookingMenu.gameObject.SetActive(true);
     }
 
     public void CookableFishTest(){
@@ -122,51 +124,52 @@ public class CampfireFunctionScript : MonoBehaviour
         buttonString = EventSystem.current.currentSelectedGameObject.name.ToString();
         if(buttonString == carpButton.ToString().Split()[0]){
             fishName = "Carp";
-            InventoryItemFinder(fishName);
+             StartCoroutine(InventoryItemFinder(fishName));
         }
         if(buttonString == goldfishButton.ToString().Split()[0]){
             fishName = "Goldfish";
-            InventoryItemFinder(fishName);
+            StartCoroutine(InventoryItemFinder(fishName));
         }
         if(buttonString == starfishButton.ToString().Split()[0]){
             fishName = "Starfish";
-            InventoryItemFinder(fishName);
+            StartCoroutine(InventoryItemFinder(fishName));
         }
         if(buttonString == barracudaButton.ToString().Split()[0]){
             fishName = "Barracuda";
-            InventoryItemFinder(fishName);
+            StartCoroutine(InventoryItemFinder(fishName));
         }
         if(buttonString == bluefishButton.ToString().Split()[0]){
             fishName = "Bluefish";
-            InventoryItemFinder(fishName);
+            StartCoroutine(InventoryItemFinder(fishName));
         }
         if(buttonString == dolphinfishButton.ToString().Split()[0]){
             fishName = "Dolphinfish";
-            InventoryItemFinder(fishName);
+            StartCoroutine(InventoryItemFinder(fishName));
         }
         if(buttonString == bluefinButton.ToString().Split()[0]){
             fishName = "Bluefin";
-            InventoryItemFinder(fishName);
+            StartCoroutine(InventoryItemFinder(fishName));
         }
         if(buttonString == sunfishButton.ToString().Split()[0]){
             fishName = "Sunfish";
-            InventoryItemFinder(fishName);
+            StartCoroutine(InventoryItemFinder(fishName));
         }
         if(buttonString == swordfishButton.ToString().Split()[0]){
             fishName = "Swordfish";
-            InventoryItemFinder(fishName);
+            StartCoroutine(InventoryItemFinder(fishName));
         }
         StartCoroutine(CookFood(called));
     }
 
-    public void InventoryItemFinder(string itemName){
+    public IEnumerator InventoryItemFinder(string itemName){
         for(int i = 0; i < playerInventory.InvSystem2.InvLSlots.Count; i++){
             if(playerInventory.InvSystem2.InvLSlots[i].itemData2 != null){
                 if(playerInventory.InvSystem2.InvLSlots[i].itemData2.ToString().Split()[0] == itemName){
-                    playerInventory.InvSystem2.InvLSlots[i].ReduceItemStack(1);
-                    playerInventoryUI.UpdateUISlot(playerInventory.InvSystem2.InvLSlots[i]);
+                    scriptableObjectPath = playerInventory.InvSystem2.InvLSlots[i].itemData2.ToString().Split()[0];
+                    if (!playerInventory) yield break;
+                    if (playerInventory.InvSystem2.AddToInvSlot(playerInventory.InvSystem2.InvLSlots[i].itemData2, -1)){}
+                    break;
                 }
-                break;
             }
         }
     }
@@ -205,6 +208,15 @@ public class CampfireFunctionScript : MonoBehaviour
 
     private IEnumerator CookFood(bool called){
         var inventory = container.GetComponent<InvItemContainer>();
+        carpButton.interactable = false;
+        goldfishButton.interactable = false;
+        starfishButton.interactable = false;
+        barracudaButton.interactable = false;
+        bluefishButton.interactable = false;
+        dolphinfishButton.interactable = false;
+        bluefinButton.interactable = false;
+        sunfishButton.interactable = false;
+        swordfishButton.interactable = false;
         BoilButton.interactable = false;
         worldCanvas.SetActive(true);
         for(int i = 0; i < 60; i++){
@@ -223,13 +235,14 @@ public class CampfireFunctionScript : MonoBehaviour
                 fCanvas.SliderUpdater(1);
             }
         }
-        //consumableItemData = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Consumable/WaterContainer.asset");
-        //if (!inventory) yield break;
-        //if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
+        consumableItemData = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Consumable/" + "Cooked" + scriptableObjectPath + ".asset");
+        if (!inventory) yield break;
+        if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
         cookSlider.value = 0;
         fCanvas.worldWaterSlider.value = 0;
         sliderTempVal = 0;
         called = false;
+        CookableFishTest();
         BoilButton.interactable = true;
         worldCanvas.SetActive(false);
     }

@@ -31,6 +31,7 @@ public class MouseData : MonoBehaviour
         menuSprite.sprite = mouseSlot.itemData2.itemIcon;
         itemCounter.text = mouseSlot.itemStackSize2.ToString();
         menuSprite.color = Color.white;
+
     }
 
     public void ConsumeMouseMultiplier(InvItemSlot mouseSlot){
