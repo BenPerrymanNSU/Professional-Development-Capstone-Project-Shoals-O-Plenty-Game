@@ -13280,6 +13280,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 560124715}
     - target: {fileID: 240379542, guid: 87130776c24019a41b082161c9de24a5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 240379542, guid: 87130776c24019a41b082161c9de24a5, type: 3}
       propertyPath: sleepFunc
       value: 
       objectReference: {fileID: 303298530}
