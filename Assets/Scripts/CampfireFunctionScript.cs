@@ -28,7 +28,6 @@ public class CampfireFunctionScript : MonoBehaviour
     private InvItemData consumableItemData;
     public InvItemContainer playerInventory;
     public InvScript_UI playerInventoryUI;
-    public InvScript_UIDisplay playerInvDisUI;
     public FollowingCanvas fCanvas;
     private string buttonString;
     private string fishName;
@@ -178,12 +177,13 @@ public class CampfireFunctionScript : MonoBehaviour
     private IEnumerator BoilWater(bool called){
         var inventory = container.GetComponent<InvItemContainer>();
         worldCanvas.SetActive(true);
+        fCanvas.WaterSliderEnabled();
         for(int i = 0; i < 60; i++){
             if(sliderTempVal != 0){
                 sliderVal = sliderTempVal;
                 i = sliderVal;
                 waterSlider.value -= sliderVal;
-                fCanvas.SliderUpdater(sliderVal);
+                fCanvas.WaterSliderUpdater(sliderVal);
                 sliderTempVal = 0;
                 yield return new WaitForSeconds(1f);
             }
@@ -191,7 +191,7 @@ public class CampfireFunctionScript : MonoBehaviour
                 sliderVal++;
                 yield return new WaitForSeconds(1f);
                 waterSlider.value -= 1;
-                fCanvas.SliderUpdater(1);
+                fCanvas.WaterSliderUpdater(1);
             }
         }
         consumableItemData = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Consumable/WaterContainer.asset");
@@ -203,6 +203,7 @@ public class CampfireFunctionScript : MonoBehaviour
         called = false;
         CookButton.interactable = true;
         BoilButton.interactable = true;
+        fCanvas.CallDisableCoroutine();
         worldCanvas.SetActive(false);
     }
 
@@ -219,12 +220,13 @@ public class CampfireFunctionScript : MonoBehaviour
         swordfishButton.interactable = false;
         BoilButton.interactable = false;
         worldCanvas.SetActive(true);
+        fCanvas.CookSliderEnabled();
         for(int i = 0; i < 60; i++){
             if(sliderTempVal != 0){
                 sliderVal = sliderTempVal;
                 i = sliderVal;
                 cookSlider.value -= sliderVal;
-                fCanvas.SliderUpdater(sliderVal);
+                fCanvas.CookSliderUpdater(sliderVal);
                 sliderTempVal = 0;
                 yield return new WaitForSeconds(1f);
             }
@@ -232,18 +234,19 @@ public class CampfireFunctionScript : MonoBehaviour
                 sliderVal++;
                 yield return new WaitForSeconds(1f);
                 cookSlider.value -= 1;
-                fCanvas.SliderUpdater(1);
+                fCanvas.CookSliderUpdater(1);
             }
         }
         consumableItemData = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Consumable/" + "Cooked" + scriptableObjectPath + ".asset");
         if (!inventory) yield break;
         if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
         cookSlider.value = 0;
-        fCanvas.worldWaterSlider.value = 0;
+        fCanvas.worldCookSlider.value = 0;
         sliderTempVal = 0;
         called = false;
         CookableFishTest();
         BoilButton.interactable = true;
+        fCanvas.CallDisableCoroutine();
         worldCanvas.SetActive(false);
     }
 

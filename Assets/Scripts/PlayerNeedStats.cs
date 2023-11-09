@@ -14,9 +14,11 @@ public class PlayerNeedStats : MonoBehaviour
     private static float hungerTemp;
     private static float thirstTemp;
     private static float restTemp;
+    public Image redWarning;
     public ClockScript clockTimer;
     private bool statLoweringCD = false;
     private static bool firstActivation;
+    private bool gameOverCalled = false;
 
     void Start(){
         hungerBar = GameObject.Find("HungerBar").GetComponent<Slider>();
@@ -49,6 +51,10 @@ public class PlayerNeedStats : MonoBehaviour
         else if(clockTimer.calcMinute == 15f || clockTimer.calcMinute == 45f ){
             statLoweringCD = false;
         }
+
+        if(Hunger == 0 && gameOverCalled == false || Thirst == 0 && gameOverCalled == false || Rest == 0 && gameOverCalled == false){
+            StartCoroutine("GameOverCheck", 0f);
+        }
     }
 
     public float AddToStat(Slider needStatBar, float needStat, float increaseStatAmount){
@@ -77,6 +83,13 @@ public class PlayerNeedStats : MonoBehaviour
 
     public void AddToStatBar(Slider needStatBar, float addStatAmount){
         needStatBar.value = addStatAmount;
+    }
+
+    private IEnumerator GameOverCheck(){
+        Debug.Log("GameOver");
+        gameOverCalled = true;
+        redWarning.gameObject.SetActive(true);
+        yield return new WaitForSeconds(.1f);
     }
 
     void OnDestroy(){
