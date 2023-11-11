@@ -42,6 +42,11 @@ public class InvItemSlot
     }
 
     public bool RemainingItemStackSpace(int itemAmountToProp){
+        if(itemData == null){
+            EmptyItemSlot();
+            return true;
+        }
+
         if (itemStackSize + itemAmountToProp <= itemData.itemStackablility){
             return true;
         }

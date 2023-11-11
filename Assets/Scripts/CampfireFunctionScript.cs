@@ -35,13 +35,18 @@ public class CampfireFunctionScript : MonoBehaviour
     public GameObject container;
     public GameObject worldCanvas;
     public int sliderVal;
-    public static int sliderTempVal;
+    public static int sliderWaterTempVal;
+    public static int sliderCookTempVal;
     public static bool sliderFirstTime;
 
     public void Start(){
-        if(sliderTempVal != 0){
+        if(sliderWaterTempVal != 0){
             var called = true;
             StartCoroutine(BoilWater(called));
+        }
+        else if(sliderCookTempVal != 0){
+            var called = true;
+            StartCoroutine(CookFood(called));
         }
     }
 
@@ -179,12 +184,12 @@ public class CampfireFunctionScript : MonoBehaviour
         worldCanvas.SetActive(true);
         fCanvas.WaterSliderEnabled();
         for(int i = 0; i < 60; i++){
-            if(sliderTempVal != 0){
-                sliderVal = sliderTempVal;
+            if(sliderWaterTempVal != 0){
+                sliderVal = sliderWaterTempVal;
                 i = sliderVal;
                 waterSlider.value -= sliderVal;
                 fCanvas.WaterSliderUpdater(sliderVal);
-                sliderTempVal = 0;
+                sliderWaterTempVal = 0;
                 yield return new WaitForSeconds(1f);
             }
             else{
@@ -199,7 +204,7 @@ public class CampfireFunctionScript : MonoBehaviour
         if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
         waterSlider.value = 0;
         fCanvas.worldWaterSlider.value = 0;
-        sliderTempVal = 0;
+        sliderWaterTempVal = 0;
         called = false;
         CookButton.interactable = true;
         BoilButton.interactable = true;
@@ -222,12 +227,12 @@ public class CampfireFunctionScript : MonoBehaviour
         worldCanvas.SetActive(true);
         fCanvas.CookSliderEnabled();
         for(int i = 0; i < 60; i++){
-            if(sliderTempVal != 0){
-                sliderVal = sliderTempVal;
+            if(sliderCookTempVal != 0){
+                sliderVal = sliderCookTempVal;
                 i = sliderVal;
                 cookSlider.value -= sliderVal;
                 fCanvas.CookSliderUpdater(sliderVal);
-                sliderTempVal = 0;
+                sliderCookTempVal = 0;
                 yield return new WaitForSeconds(1f);
             }
             else{
@@ -242,7 +247,7 @@ public class CampfireFunctionScript : MonoBehaviour
         if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
         cookSlider.value = 0;
         fCanvas.worldCookSlider.value = 0;
-        sliderTempVal = 0;
+        sliderCookTempVal = 0;
         called = false;
         CookableFishTest();
         BoilButton.interactable = true;
@@ -251,7 +256,8 @@ public class CampfireFunctionScript : MonoBehaviour
     }
 
     void OnDestroy(){
-        sliderTempVal = sliderVal;
+        sliderWaterTempVal = sliderVal;
+        sliderCookTempVal = sliderVal;
     }
 
 }

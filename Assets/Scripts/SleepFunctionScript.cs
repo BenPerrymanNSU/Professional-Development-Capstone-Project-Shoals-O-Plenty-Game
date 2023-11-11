@@ -12,7 +12,6 @@ public class SleepFunctionScript : MonoBehaviour
     public PlayerNeedStats playerNStats;
     public LightingSystem lightSystemCall;
     public Animator fadingAnim;
-    //private bool ButtonClicked;
 
     public void ScriptFunction(bool called){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
