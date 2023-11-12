@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: CookedBarracuda
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 284cf7803046bed439550a7a81417fd4, type: 3}
+  itemIcon: {fileID: 21300000, guid: d390e4d8b0dec0046bc57c02f30ede49, type: 3}
   itemStackablility: 1
   itemID: 16
   itemDisplayedName: Cooked Barracuda

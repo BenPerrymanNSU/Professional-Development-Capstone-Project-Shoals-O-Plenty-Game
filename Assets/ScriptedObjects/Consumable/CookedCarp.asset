@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: CookedCarp
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: 55f29723048ebc2428d9294b7db3c971, type: 3}
   itemStackablility: 1
   itemID: 13
   itemDisplayedName: Cooked Carp

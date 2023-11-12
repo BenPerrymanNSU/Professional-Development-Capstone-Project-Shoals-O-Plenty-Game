@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: CookedSwordfish
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 3809697a8b523a24eb6f8b1136eef1bc, type: 3}
+  itemIcon: {fileID: 21300000, guid: cf7034733f5668048a799fc9be0489b4, type: 3}
   itemStackablility: 1
   itemID: 21
   itemDisplayedName: Cooked Swordfish

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
   m_Name: CookedGoldfish
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: df54dd450d2ff16418b54f7c99486e8d, type: 3}
   itemStackablility: 1
   itemID: 14
   itemDisplayedName: Cooked Goldfish
