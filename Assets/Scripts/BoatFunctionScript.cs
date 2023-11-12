@@ -61,9 +61,11 @@ public class BoatFunctionScript : MonoBehaviour
             ChangeModel(0, 0, false, true);
         }
         if(level2Boat == true){
+            interchangableModel.transform.GetChild(0).gameObject.SetActive(false);
             ChangeModel(0, 1, false, true);
         }
         if(level3Boat == true){
+            interchangableModel.transform.GetChild(0).gameObject.SetActive(false);
             ChangeModel(1, 2, false, true);
         }
     }
@@ -111,7 +113,6 @@ public class BoatFunctionScript : MonoBehaviour
         if(level3Boat == true){
             if(woodNeeded == 0 && ropeNeeded == 0 && rockNeeded == 0){
                 Debug.Log("Win");
-                level3Boat = false;
             }
         }
     }
