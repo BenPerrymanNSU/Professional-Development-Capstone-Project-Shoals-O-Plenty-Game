@@ -15,6 +15,7 @@ public class PlayerNeedStats : MonoBehaviour
     private static float thirstTemp;
     private static float restTemp;
     public Image redWarning;
+    public WinOrLoseScript gameCompletion;
     public ClockScript clockTimer;
     private bool statLoweringCD = false;
     private static bool firstActivation;
@@ -50,6 +51,16 @@ public class PlayerNeedStats : MonoBehaviour
         }
         else if(clockTimer.calcMinute == 15f || clockTimer.calcMinute == 45f ){
             statLoweringCD = false;
+        }
+
+    }
+
+    void FixedUpdate(){
+        if(Hunger <= 20 && gameOverCalled == false || Thirst <= 20 && gameOverCalled == false || Rest <= 20 && gameOverCalled == false){
+            redWarning.gameObject.SetActive(true);
+        }
+        else{
+            redWarning.gameObject.SetActive(false);
         }
 
         if(Hunger == 0 && gameOverCalled == false || Thirst == 0 && gameOverCalled == false || Rest == 0 && gameOverCalled == false){
@@ -88,8 +99,8 @@ public class PlayerNeedStats : MonoBehaviour
     private IEnumerator GameOverCheck(){
         Debug.Log("GameOver");
         gameOverCalled = true;
-        redWarning.gameObject.SetActive(true);
         yield return new WaitForSeconds(.1f);
+        gameCompletion.WinOrLose(false);
     }
 
     void OnDestroy(){

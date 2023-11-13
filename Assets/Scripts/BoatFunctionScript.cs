@@ -17,6 +17,7 @@ public class BoatFunctionScript : MonoBehaviour
     public Text menuRopeText;
     public Text menuRockText;
     public GameObject interchangableModel;
+    public WinOrLoseScript gameCompletion;
     public InvItemContainer playerInventory;
     public Animator fadingAnim;
     private string materialName;
@@ -112,7 +113,7 @@ public class BoatFunctionScript : MonoBehaviour
 
         if(level3Boat == true){
             if(woodNeeded == 0 && ropeNeeded == 0 && rockNeeded == 0){
-                Debug.Log("Win");
+                gameCompletion.WinOrLose(true);
             }
         }
     }

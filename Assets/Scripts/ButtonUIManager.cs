@@ -14,14 +14,18 @@ public class ButtonUIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void SceneBack(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
     // loads scene 0, the main menu
     public void SceneReturn(){
-        Debug.Log("fwtessafde");
         SceneManager.LoadScene(0);
     }
 
     // closes unity editor play view 
     public void Exit(){
         UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 }
