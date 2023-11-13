@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 598d8a6bcc8ee29469fed17c273bb767, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -347,7 +347,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -590,6 +590,18 @@ MonoBehaviour:
   invContainerSize: 20
   invSystem:
     invSlots: []
+  fish0: 0
+  fish1: 0
+  fish2: 0
+  fish3: 0
+  fish4: 0
+  fish5: 0
+  fish6: 0
+  fish7: 0
+  fish8: 0
+  material9: 0
+  material10: 0
+  material11: 0
 --- !u!4 &174943399
 Transform:
   m_ObjectHideFlags: 0
@@ -1111,7 +1123,7 @@ RectTransform:
   m_Children:
   - {fileID: 1294610856}
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1764,6 +1776,7 @@ GameObject:
   - component: {fileID: 514591450}
   - component: {fileID: 514591451}
   - component: {fileID: 514591452}
+  - component: {fileID: 514591453}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Untagged
@@ -1898,6 +1911,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &514591453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514591449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7340f5333dadf3148908742a0d10be59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &523865802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5469173433711607791, guid: bf1d0279ba8e64447bea6eeb8999a4e7, type: 3}
@@ -2406,7 +2431,7 @@ RectTransform:
   - {fileID: 1248345141}
   - {fileID: 312739033}
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3662,7 +3687,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 7
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3936,6 +3961,14 @@ PrefabInstance:
       propertyPath: clockTimer
       value: 
       objectReference: {fileID: 514591451}
+    - target: {fileID: 3947474945118338964, guid: bf1d0279ba8e64447bea6eeb8999a4e7, type: 3}
+      propertyPath: redWarning
+      value: 
+      objectReference: {fileID: 1377031696}
+    - target: {fileID: 3947474945118338964, guid: bf1d0279ba8e64447bea6eeb8999a4e7, type: 3}
+      propertyPath: gameCompletion
+      value: 
+      objectReference: {fileID: 514591453}
     - target: {fileID: 4727968740484058180, guid: bf1d0279ba8e64447bea6eeb8999a4e7, type: 3}
       propertyPath: m_Name
       value: PlayerFishing
@@ -5334,7 +5367,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5473,7 +5506,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5822,6 +5855,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cfd83ce1e29c14bb7a84c8623fc932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1377031694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1377031695}
+  - component: {fileID: 1377031697}
+  - component: {fileID: 1377031696}
+  m_Layer: 5
+  m_Name: Warning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1377031695
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377031694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5624985, y: 0.5624985, z: 0.5624985}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1768708840}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.0012664795}
+  m_SizeDelta: {x: 1920, y: 1080.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1377031696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377031694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.08627451}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1377031697
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377031694}
+  m_CullTransparentMesh: 1
 --- !u!1 &1379336336 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3980868508365557059, guid: 879904281fb15074b8787b0c83dcd4a8, type: 3}
@@ -5859,7 +5968,7 @@ RectTransform:
   - {fileID: 503964218}
   - {fileID: 1664509290}
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6498,7 +6607,7 @@ RectTransform:
   - {fileID: 476436565}
   - {fileID: 1660612245}
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7433,7 +7542,7 @@ Transform:
   - {fileID: 1420210624}
   - {fileID: 1097504680}
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1723645401
 GameObject:
@@ -7665,6 +7774,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1377031695}
   - {fileID: 2119221319}
   - {fileID: 262022374}
   - {fileID: 69496959}
@@ -7672,13 +7782,13 @@ RectTransform:
   - {fileID: 1404482084}
   - {fileID: 681068525}
   - {fileID: 1276687496}
-  - {fileID: 1019873433}
   - {fileID: 311084721}
   - {fileID: 1613063375}
   - {fileID: 842686804}
   - {fileID: 557728149}
   - {fileID: 1577435475}
   - {fileID: 2098250427}
+  - {fileID: 1019873433}
   - {fileID: 1716381783}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -8312,7 +8422,7 @@ RectTransform:
   m_Children:
   - {fileID: 64085965}
   m_Father: {fileID: 1768708840}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8365,7 +8475,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1768708841}
         m_TargetAssemblyTypeName: ButtonUIManager, Assembly-CSharp
-        m_MethodName: SceneReturn
+        m_MethodName: SceneBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
