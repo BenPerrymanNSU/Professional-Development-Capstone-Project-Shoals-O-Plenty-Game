@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 9c95a6ef941809b459647ba43d9b91a0, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -397,6 +397,7 @@ MonoBehaviour:
   menuRopeText: {fileID: 1234874292}
   menuRockText: {fileID: 400514569}
   interchangableModel: {fileID: 1563968912}
+  gameCompletion: {fileID: 1835867166}
   playerInventory: {fileID: 2127391834}
   fadingAnim: {fileID: 208761737}
 --- !u!1 &41126390
@@ -2470,7 +2471,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1510962150}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4078,7 +4079,7 @@ RectTransform:
   - {fileID: 1847532139}
   - {fileID: 1211906740}
   m_Father: {fileID: 1510962150}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6400,7 +6401,7 @@ RectTransform:
   - {fileID: 1518915423}
   - {fileID: 1771641950}
   m_Father: {fileID: 1510962150}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6630,7 +6631,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 2
@@ -9384,7 +9385,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1510962150}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11622,12 +11623,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1597290687}
+  - {fileID: 1557286532}
   - {fileID: 1046500077}
   - {fileID: 396358073}
   - {fileID: 1590347988}
   - {fileID: 695160550}
   - {fileID: 208761736}
-  - {fileID: 1557286532}
   - {fileID: 635323137}
   - {fileID: 2136804344}
   - {fileID: 531448231}
@@ -11751,7 +11752,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1510962150}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12148,7 +12149,7 @@ RectTransform:
   - {fileID: 2045634762}
   - {fileID: 735956840}
   m_Father: {fileID: 1510962150}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13722,6 +13723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1835867165}
   - component: {fileID: 1835867164}
+  - component: {fileID: 1835867166}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Untagged
@@ -13760,6 +13762,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835867166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835867163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7340f5333dadf3148908742a0d10be59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1847532138
 GameObject:
   m_ObjectHideFlags: 0
@@ -16141,6 +16155,10 @@ PrefabInstance:
       propertyPath: redWarning
       value: 
       objectReference: {fileID: 1557286533}
+    - target: {fileID: 3485926787429876577, guid: 87130776c24019a41b082161c9de24a5, type: 3}
+      propertyPath: gameCompletion
+      value: 
+      objectReference: {fileID: 1835867166}
     - target: {fileID: 3485926788260237595, guid: 87130776c24019a41b082161c9de24a5, type: 3}
       propertyPath: m_Name
       value: PlayerTest
