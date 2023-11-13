@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen/TitleScreen.unity
+    guid: 88fc7d941beddb64faca44332191349c
+  - enabled: 1
     path: Assets/Scenes/TestScene/TestScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Fishing/FishingGame.unity
     guid: 2062edcca4f476f4398d2c0b3b7e51fe
+  - enabled: 1
+    path: Assets/Scenes/DeathOrWinScreen/DeathOrWin.unity
+    guid: 5a02175a72c72244da63947606abae17
   m_configObjects: {}
