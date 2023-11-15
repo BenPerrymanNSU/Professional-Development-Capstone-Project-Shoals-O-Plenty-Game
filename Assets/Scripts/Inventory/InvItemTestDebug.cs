@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class InvItemTestDebug : MonoBehaviour
 {
@@ -21,56 +20,57 @@ public class InvItemTestDebug : MonoBehaviour
             var ckey = commandKeys[i];
             if (Input.GetKey(ckey)) {
                 if (ckey == KeyCode.Alpha1){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Easy/Goldfish.asset");
+                    itemDataDebug = Resources.Load<InvItemData>("ScriptedObjects/Easy/Goldfish");
+                    Debug.Log(itemDataDebug);
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 1)){
 
                     }
                 }
                 else if (ckey == KeyCode.Alpha2){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Med/Barracuda.asset");
+                    itemDataDebug = Resources.Load<InvItemData>("ScriptedObjects/Med/Barracuda");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 1)){
 
                     }
                 }
                 else if (ckey == KeyCode.Alpha3){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Easy/Goldfish.asset");
+                    itemDataDebug = Resources.Load<InvItemData>("ScriptedObjects/Easy/Goldfish");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 99)){
 
                     }
                 }
                 else if (ckey == KeyCode.Alpha4){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Med/Barracuda.asset");
+                    itemDataDebug = Resources.Load<InvItemData>("ScriptedObjects/Med/Barracuda");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 99)){
                         
                     }
                 }
                 else if (ckey == KeyCode.Alpha5){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Hard/Swordfish.asset");
+                    itemDataDebug = Resources.Load<InvItemData>("ScriptedObjects/Hard/Swordfish");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 1)){
                         
                     }
                 }
                 else if (ckey == KeyCode.Alpha6){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Materials/WoodPlank.asset");
+                    itemDataDebug = Resources.Load<InvItemData>("ScriptedObjects/Materials/WoodPlank");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 1)){
                         
                     }
                 }
                 else if (ckey == KeyCode.Alpha7){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Materials/Rock.asset");
+                    itemDataDebug = Resources.Load<InvItemData>("ScriptedObjects/Materials/Rock");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 1)){
                         
                     }
                 }
                 else if (ckey == KeyCode.Alpha8){
-                    itemDataDebug = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Materials/Rope.asset");
+                    itemDataDebug = Resources.Load<InvItemData>("ScriptedObjects/Materials/Rope");
                     if (!inventory) return;
                     if (inventory.InvSystem2.AddToInvSlot(itemDataDebug, 1)){
                         

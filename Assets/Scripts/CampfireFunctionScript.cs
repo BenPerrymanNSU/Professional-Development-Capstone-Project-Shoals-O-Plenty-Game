@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 using UnityEngine.EventSystems;
-using UnityEditor;
 
 public class CampfireFunctionScript : MonoBehaviour
 {
@@ -199,7 +198,7 @@ public class CampfireFunctionScript : MonoBehaviour
                 fCanvas.WaterSliderUpdater(1);
             }
         }
-        consumableItemData = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Consumable/WaterContainer.asset");
+        consumableItemData = Resources.Load<InvItemData>("ScriptedObjects/Consumable/WaterContainer");
         if (!inventory) yield break;
         if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
         waterSlider.value = 0;
@@ -242,7 +241,7 @@ public class CampfireFunctionScript : MonoBehaviour
                 fCanvas.CookSliderUpdater(1);
             }
         }
-        consumableItemData = AssetDatabase.LoadAssetAtPath<InvItemData>("Assets/ScriptedObjects/Consumable/" + "Cooked" + scriptableObjectPath + ".asset");
+        consumableItemData = Resources.Load<InvItemData>("ScriptedObjects/Consumable/" + "Cooked" + scriptableObjectPath);
         if (!inventory) yield break;
         if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
         cookSlider.value = 0;
