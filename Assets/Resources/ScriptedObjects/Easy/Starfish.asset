@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ab06c066da694448e8a1ec490e8a36, type: 3}
+  m_Name: Starfish
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: 8cb8fa7f9ea30fe4ea81f4109405cea2, type: 3}
+  itemStackablility: 99
+  itemID: 2
+  itemDisplayedName: Starfish
+  itemDisplayedDesc: If only they could see the stars above...
+  itemType: Fish
+  itemDifficulty: Easy
+  itemGoodFishChance: 0.55
+  itemBadFishChance: 0.75
+  itemRequiredPercent: 0.3
+  itemEdibility: 1
+  itemRaw: 1
+  itemHungerSatiation: 3
+  itemThirstSatiation: 0
