@@ -19,7 +19,7 @@ MonoBehaviour:
   itemDisplayedDesc: Far from home...
   itemType: Fish
   itemDifficulty: Easy
-  itemGoodFishChance: 0.5
+  itemGoodFishChance: 0.3
   itemBadFishChance: 0.75
   itemRequiredPercent: 0.3
   itemEdibility: 1

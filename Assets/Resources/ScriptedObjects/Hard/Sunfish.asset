@@ -19,7 +19,7 @@ MonoBehaviour:
   itemDisplayedDesc: Large, flat, and strange looking...
   itemType: Fish
   itemDifficulty: Hard
-  itemGoodFishChance: 0.15
+  itemGoodFishChance: 0.1
   itemBadFishChance: 0.65
   itemRequiredPercent: 0.8
   itemEdibility: 1

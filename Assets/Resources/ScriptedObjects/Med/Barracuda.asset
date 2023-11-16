@@ -19,7 +19,7 @@ MonoBehaviour:
   itemDisplayedDesc: Won't win any beauty contests...
   itemType: Fish
   itemDifficulty: Med
-  itemGoodFishChance: 0.35
+  itemGoodFishChance: 0.25
   itemBadFishChance: 0.9
   itemRequiredPercent: 0.5
   itemEdibility: 1

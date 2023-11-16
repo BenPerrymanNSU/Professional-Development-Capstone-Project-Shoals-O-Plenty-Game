@@ -19,7 +19,7 @@ MonoBehaviour:
   itemDisplayedDesc: If only they could see the stars above...
   itemType: Fish
   itemDifficulty: Easy
-  itemGoodFishChance: 0.55
+  itemGoodFishChance: 0.35
   itemBadFishChance: 0.75
   itemRequiredPercent: 0.3
   itemEdibility: 1

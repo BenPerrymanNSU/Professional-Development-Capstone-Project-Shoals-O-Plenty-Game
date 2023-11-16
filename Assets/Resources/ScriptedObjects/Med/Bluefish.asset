@@ -19,7 +19,7 @@ MonoBehaviour:
   itemDisplayedDesc: Average, but at least the name doesn't lie...
   itemType: Fish
   itemDifficulty: Med
-  itemGoodFishChance: 0.35
+  itemGoodFishChance: 0.25
   itemBadFishChance: 0.75
   itemRequiredPercent: 0.5
   itemEdibility: 1

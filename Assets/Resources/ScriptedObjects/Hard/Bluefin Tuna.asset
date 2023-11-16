@@ -19,7 +19,7 @@ MonoBehaviour:
   itemDisplayedDesc: Tuna, Tuna, Tuna...
   itemType: Fish
   itemDifficulty: Hard
-  itemGoodFishChance: 0.2
+  itemGoodFishChance: 0.15
   itemBadFishChance: 0.6
   itemRequiredPercent: 0.8
   itemEdibility: 1

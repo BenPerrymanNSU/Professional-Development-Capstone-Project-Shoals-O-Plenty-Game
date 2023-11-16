@@ -19,7 +19,7 @@ MonoBehaviour:
   itemDisplayedDesc: A tough fight for a modest weapon...
   itemType: Fish
   itemDifficulty: Hard
-  itemGoodFishChance: 0.1
+  itemGoodFishChance: 0.05
   itemBadFishChance: 0.6
   itemRequiredPercent: 0.8
   itemEdibility: 1
