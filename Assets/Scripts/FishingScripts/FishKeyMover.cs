@@ -34,7 +34,6 @@ public class FishKeyMover : MonoBehaviour
             Key = GameObject.Find("FishKey" + i.ToString());
             fishKeys[i] = Key;
             var randSlot = Random.Range(1, 4);
-            //Debug.Log("Slot: " + randSlot);
             for (int j = 1; j < 4; j++){
                 if(j == randSlot && minimumGoodFish > 0 && minimumGoodFishCleared == false){
                     fishKeys[i].transform.GetChild(j).gameObject.transform.GetChild(1).gameObject.SetActive(true);

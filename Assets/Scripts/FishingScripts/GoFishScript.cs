@@ -79,54 +79,42 @@ public class GoFishScript : MonoBehaviour
             Debug.Log(randomNum);
 
             if(randomNum <= fishDifficultyEasy){
-                var randomRange = Random.Range(0, 3);
-                itemDataFishing = itemDataEasyFish[randomRange];
-                Debug.Log(itemDataFishing.itemDisplayedName);
-                FishChance.goodFish = itemDataFishing.itemGoodFishChance;
-                FishChance.badFish = itemDataFishing.itemBadFishChance;
-                requiredPercent = itemDataFishing.itemRequiredPercent;
+                SetFish(itemDataEasyFish);
             }
             else if(randomNum <= fishDifficultyMed){
-                var randomRange = Random.Range(0, 3);
-                itemDataFishing = itemDataMedFish[randomRange];
-                Debug.Log(itemDataFishing.itemDisplayedName);
-                FishChance.goodFish = itemDataFishing.itemGoodFishChance;
-                FishChance.badFish = itemDataFishing.itemBadFishChance;
-                requiredPercent = itemDataFishing.itemRequiredPercent;
+                SetFish(itemDataMedFish);
             }
             else if(randomNum <= fishDifficultyHard){
-                var randomRange = Random.Range(0, 3);
-                itemDataFishing = itemDataHardFish[randomRange];
-                Debug.Log(itemDataFishing.itemDisplayedName);
-                FishChance.goodFish = itemDataFishing.itemGoodFishChance;
-                FishChance.badFish = itemDataFishing.itemBadFishChance;
-                requiredPercent = itemDataFishing.itemRequiredPercent;
+                SetFish(itemDataHardFish);
             }
             else{
-                Debug.Log("Tough Luck");
                 FishChance.goodFish = 0.00f;
                 FishChance.badFish = 1.00f;
                 requiredPercent = 1.00f;
             }
             StartCoroutine(MoveFishKeys());
+            Debug.Log("Passed MoveKeys");
         }
         else if(Random.value < materialPercentage){
             Invoke("ModelActivation", 0f);
-            var randomRange = Random.Range(0, 3);
-            itemDataFishing = itemDataMaterial[randomRange];
-            Debug.Log(itemDataFishing.itemDisplayedName);
-            FishChance.goodFish = itemDataFishing.itemGoodFishChance;
-            FishChance.badFish = itemDataFishing.itemBadFishChance;
-            requiredPercent = itemDataFishing.itemRequiredPercent;
+            SetFish(itemDataMaterial);
             StartCoroutine(MoveFishKeys());
         }
         else{
-            Debug.Log("Nothin");
             Line.SetActive(false);
             Bobber.SetActive(false);
             goFishButton.interactable = true;
             exitButton.interactable = true; 
         }
+    }
+
+    private void SetFish(InvItemData[] itemList){
+        var randomRange = Random.Range(0, 3);
+        itemDataFishing = itemList[randomRange];
+        Debug.Log(itemDataFishing.itemDisplayedName);
+        FishChance.goodFish = itemDataFishing.itemGoodFishChance;
+        FishChance.badFish = itemDataFishing.itemBadFishChance;
+        requiredPercent = itemDataFishing.itemRequiredPercent;
     }
 
     private void ModelActivation(){

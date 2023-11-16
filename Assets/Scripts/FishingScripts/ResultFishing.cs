@@ -19,6 +19,8 @@ public class ResultFishing : MonoBehaviour
 
     public Text FishPercentageText;
     public Image readyGoImage;
+    public Image resultMenu;
+    public Image fishPic;
     public Sprite readyGoSprite;
     public Button goFishButton;
     public Button exitButton;
@@ -27,54 +29,78 @@ public class ResultFishing : MonoBehaviour
     public GoFishScript difficultyPercent;
     public GoFishScript fishResultData;
     public GameObject container;
-    public int numOfFishCaught = 0;
 
     public void CheckIfFishIsCaught(){
         FishingRodMovement.SetBool("FishingRodFlingFinish", false);
         FishingRodMovement.SetBool("FishingBegin", false);
         FishingRodMovement.SetBool("FishingGameOver", true);
-        var inventory = container.GetComponent<InvItemContainer>();
         var currentPercent = resultGrabPercent.fishCatchPercentage;
         var neededPercent = difficultyPercent.requiredPercent;
-        var resultData = fishResultData.itemDataFishing;
 
         if(currentPercent == 1.00f){
             Debug.Log("Pure Victory!!!!!");
-            numOfFishCaught++;
-            if (!inventory) return;
-            if (inventory.InvSystem2.AddToInvSlot(resultData, 1)){
-
-            }
-            Invoke("TheGreatReset", 0.5f);
+            ResultsMenuActivation(3);
         }
         else if(currentPercent >= neededPercent){
             Debug.Log("Goodjob!");
-            numOfFishCaught++;
-            if (!inventory) return;
-            if (inventory.InvSystem2.AddToInvSlot(resultData, 1)){
-
-            }
-            Invoke("TheGreatReset", 0.5f);
+            ResultsMenuActivation(2);
         }
         else{
             Debug.Log("Need more practice...");
-            Invoke("TheGreatReset", 0.5f);
-            
+            ResultsMenuActivation(1);
         }
     }
+
+    private void ResultsMenuActivation(int outcomeNum){
+        var resultData = fishResultData.itemDataFishing;
+        resultMenu.gameObject.SetActive(true);
+        fishPic.sprite = resultData.itemIcon;
+        switch(outcomeNum){
+            case 3:
+                resultMenu.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.SetActive(true);
+                resultMenu.transform.GetChild(1).gameObject.SetActive(true);
+                GiveItem();
+                break;
+            case 2:
+                resultMenu.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                resultMenu.transform.GetChild(1).gameObject.SetActive(true);
+                GiveItem();
+                break;
+            case 1:
+                resultMenu.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                resultMenu.transform.GetChild(1).gameObject.SetActive(false);
+                StartCoroutine("ShowResults", 0f); 
+                break;
+            default:
+                Debug.Log("Something Didn't Work!");
+                break;
+        }
+    }
+
+    private void GiveItem(){
+        var inventory = container.GetComponent<InvItemContainer>();
+        var resultData = fishResultData.itemDataFishing;
+        if (!inventory) return;
+        if (inventory.InvSystem2.AddToInvSlot(resultData, 1)){}
+        StartCoroutine("ShowResults", 0f);
+    }
+
+    private IEnumerator ShowResults(){
+        FishPercentageText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        Invoke("TheGreatReset", 0.5f);
+    }
+
 
     private void TheGreatReset(){
         Debug.Log("Reset!");
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
         FishKeyMovement.keepAnimatorControllerStateOnDisable = false;
-        FishPercentageText.gameObject.SetActive(false);
         readyGoImage.sprite = readyGoSprite;
         readyGoImage.gameObject.SetActive(false);
         Line.SetActive(false);
         Bobber.SetActive(false);
-        goFishButton.interactable = true;
-        exitButton.interactable = true;
 
         fishMove.FishingActive = false;
         fishMove.countGoodFish = 0;
@@ -99,6 +125,10 @@ public class ResultFishing : MonoBehaviour
         fishingKeys.SetActive(false);
         FishingRodMovement.SetBool("FishingGameOver", false);
         FishingRodMovement.Play("Base Layer.FishingIdle", 0, 0f);
+
+        resultMenu.gameObject.SetActive(false);
+        goFishButton.interactable = true;
+        exitButton.interactable = true;
     }
 
 }

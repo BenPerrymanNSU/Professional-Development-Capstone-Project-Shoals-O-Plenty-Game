@@ -11,5 +11,6 @@ public class CursorControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         CameraController.GetComponent<PlayerPOV>().enabled = false;
         CameraController.GetComponent<PlayerMovement>().enabled = false;
+        CameraController.GetComponentInChildren<PlayerCommands>().enabled = false;
     }
 }
