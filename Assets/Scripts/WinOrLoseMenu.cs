@@ -13,6 +13,8 @@ public class WinOrLoseMenu : MonoBehaviour
 
     void Awake(){
         finalState = gameState.State2;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         if(finalState == true){
             if(Background != null && menuText != null){
                 Background.color = Color.blue;

@@ -30,13 +30,17 @@ public class FollowingCanvas : MonoBehaviour
         worldCookSlider.value -= sliderAmount;
     }
 
-    public void CallDisableCoroutine(){
-        StartCoroutine(DisableSliders());
+    public void CallDisableCoroutine(int whichSlider){
+        StartCoroutine(DisableSliders(whichSlider));
     }
 
-    private IEnumerator DisableSliders(){
-        worldCookSlider.gameObject.SetActive(false);
-        worldWaterSlider.gameObject.SetActive(false);
+    private IEnumerator DisableSliders(int worldSlider){
+        if(worldSlider == 1){
+            worldCookSlider.gameObject.SetActive(false);
+        }
+        else if(worldSlider == 2){
+            worldWaterSlider.gameObject.SetActive(false);
+        }
         yield return new WaitForSeconds(.1f);
     }
 }

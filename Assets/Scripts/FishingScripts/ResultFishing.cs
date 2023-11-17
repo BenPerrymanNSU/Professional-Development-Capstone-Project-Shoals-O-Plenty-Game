@@ -55,6 +55,9 @@ public class ResultFishing : MonoBehaviour
         var resultData = fishResultData.itemDataFishing;
         resultMenu.gameObject.SetActive(true);
         fishPic.sprite = resultData.itemIcon;
+        resultMenu.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        resultMenu.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        resultMenu.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(false);
         switch(outcomeNum){
             case 3:
                 resultMenu.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.SetActive(true);
@@ -96,6 +99,7 @@ public class ResultFishing : MonoBehaviour
         Debug.Log("Reset!");
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
+        CameraController.GetComponentInChildren<PauseMenuFishing>().enabled = true;
         FishKeyMovement.keepAnimatorControllerStateOnDisable = false;
         readyGoImage.sprite = readyGoSprite;
         readyGoImage.gameObject.SetActive(false);

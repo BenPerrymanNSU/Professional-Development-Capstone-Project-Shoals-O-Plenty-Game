@@ -25,7 +25,7 @@ public class ButtonUIManager : MonoBehaviour
 
     // closes unity editor play view 
     public void Exit(){
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }

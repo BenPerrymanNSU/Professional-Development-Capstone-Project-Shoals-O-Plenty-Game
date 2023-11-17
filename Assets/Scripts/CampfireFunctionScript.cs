@@ -21,6 +21,7 @@ public class CampfireFunctionScript : MonoBehaviour
     public Button bluefinButton;
     public Button sunfishButton;
     public Button swordfishButton;
+    public Button fishingSceneButton;
     public Slider waterSlider;
     public Slider cookSlider;
     public PlayerNeedStats playerNStats;
@@ -37,18 +38,18 @@ public class CampfireFunctionScript : MonoBehaviour
     public static int sliderWaterTempVal;
     public static int sliderCookTempVal;
     public static bool sliderFirstTime;
-
+/*
     public void Start(){
         if(sliderWaterTempVal != 0){
             var called = true;
             StartCoroutine(BoilWater(called));
         }
-        else if(sliderCookTempVal != 0){
+        if(sliderCookTempVal != 0){
             var called = true;
             StartCoroutine(CookFood(called));
         }
     }
-
+*/
     public void ScriptFunction(bool called){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         if (called == true){
@@ -73,7 +74,6 @@ public class CampfireFunctionScript : MonoBehaviour
     }
 
     public void BoilButtonFunc(bool called){
-        CookButton.interactable = false;
         BoilButton.interactable = false;
         StartCoroutine(BoilWater(called));
     }
@@ -180,7 +180,7 @@ public class CampfireFunctionScript : MonoBehaviour
 
     private IEnumerator BoilWater(bool called){
         var inventory = container.GetComponent<InvItemContainer>();
-        worldCanvas.SetActive(true);
+        fishingSceneButton.interactable = false;
         fCanvas.WaterSliderEnabled();
         for(int i = 0; i < 60; i++){
             if(sliderWaterTempVal != 0){
@@ -201,18 +201,19 @@ public class CampfireFunctionScript : MonoBehaviour
         consumableItemData = Resources.Load<InvItemData>("ScriptedObjects/Consumable/WaterContainer");
         if (!inventory) yield break;
         if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
+        sliderVal = 0;
         waterSlider.value = 0;
         fCanvas.worldWaterSlider.value = 0;
         sliderWaterTempVal = 0;
         called = false;
-        CookButton.interactable = true;
+        fishingSceneButton.interactable = true;
         BoilButton.interactable = true;
-        fCanvas.CallDisableCoroutine();
-        worldCanvas.SetActive(false);
+        fCanvas.CallDisableCoroutine(2);
     }
 
     private IEnumerator CookFood(bool called){
         var inventory = container.GetComponent<InvItemContainer>();
+        fishingSceneButton.interactable = false;
         carpButton.interactable = false;
         goldfishButton.interactable = false;
         starfishButton.interactable = false;
@@ -222,8 +223,7 @@ public class CampfireFunctionScript : MonoBehaviour
         bluefinButton.interactable = false;
         sunfishButton.interactable = false;
         swordfishButton.interactable = false;
-        BoilButton.interactable = false;
-        worldCanvas.SetActive(true);
+        CookButton.interactable = false;
         fCanvas.CookSliderEnabled();
         for(int i = 0; i < 60; i++){
             if(sliderCookTempVal != 0){
@@ -244,14 +244,15 @@ public class CampfireFunctionScript : MonoBehaviour
         consumableItemData = Resources.Load<InvItemData>("ScriptedObjects/Consumable/" + "Cooked" + scriptableObjectPath);
         if (!inventory) yield break;
         if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
+        sliderVal = 0;
         cookSlider.value = 0;
         fCanvas.worldCookSlider.value = 0;
         sliderCookTempVal = 0;
         called = false;
         CookableFishTest();
-        BoilButton.interactable = true;
-        fCanvas.CallDisableCoroutine();
-        worldCanvas.SetActive(false);
+        fishingSceneButton.interactable = true;
+        CookButton.interactable = true;
+        fCanvas.CallDisableCoroutine(1);
     }
 
     void OnDestroy(){

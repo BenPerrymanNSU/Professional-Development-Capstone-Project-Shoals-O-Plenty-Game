@@ -6,13 +6,18 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     private GameObject CameraController;
+    public GameObject pauseMenu;
     public GameObject sleepMenu;
     public SleepFunctionScript sleepFunc;
     public GameObject fishinMenu;
     public FishingFunctionScript fishFunc;
     public GameObject inventoryMenu;
+    public CampfireFunctionScript campFunc;
+    public GameObject campfireMenu;
+    public GameObject cookMenu;
+    public BoatFunctionScript boatFunc;
+    public GameObject repairMenu;
     public PlayerCommands playerComs;
-    //public Image campfireMenu;
     private bool Paused = false;
 
     void Start(){
@@ -36,14 +41,12 @@ public class PauseMenu : MonoBehaviour
     }
 
     void PauseGame(){
-
+        
         if(sleepMenu.activeSelf == true){
-            sleepFunc.ScriptFunction(false);
-            sleepMenu.SetActive(false);
+            sleepFunc.NoButton(true);
         }
         else if(fishinMenu.activeSelf == true){
-            fishFunc.ScriptFunction(false);
-            fishinMenu.SetActive(false);
+            fishFunc.NoButton(true);
         }
         else if(inventoryMenu.activeSelf == true){
             playerComs.InventoryOpen = false;
@@ -51,8 +54,18 @@ public class PauseMenu : MonoBehaviour
             playerComs.notInScene = false;
             inventoryMenu.SetActive(false);
         }
+        else if(campfireMenu.activeSelf == true){
+            campFunc.NoButton(true);
+        }
+        else if(cookMenu.activeSelf == true){
+            campFunc.NoButton(true);
+        }
+        else if(repairMenu.activeSelf == true){
+            boatFunc.NoButton(true);
+        }
 
         Paused = true;
+        pauseMenu.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         CameraController.GetComponent<PlayerPOV>().enabled = false;
@@ -62,11 +75,16 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame(){
         Paused = false;
+        pauseMenu.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         CameraController.GetComponent<PlayerPOV>().enabled = true;
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
         Time.timeScale = 1;
         
+    }
+
+    private void OnDestroy(){
+        Time.timeScale = 1;
     }
 }

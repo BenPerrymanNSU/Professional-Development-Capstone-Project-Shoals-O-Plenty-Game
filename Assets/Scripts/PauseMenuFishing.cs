@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PauseMenuFishing : MonoBehaviour
 {
     private GameObject CameraController;
+    public GameObject pauseMenu;
     public GameObject inventoryMenu;
     public PlayerCommands playerComs;
     public Button exitButton;
@@ -33,7 +34,6 @@ public class PauseMenuFishing : MonoBehaviour
     }
 
     void PauseGame(){
-        Debug.Log("Paused");
         exitButton.interactable = false;
         fishButton.interactable = false;
         if(inventoryMenu.activeSelf == true){
@@ -44,6 +44,7 @@ public class PauseMenuFishing : MonoBehaviour
         }
 
         Paused = true;
+        pauseMenu.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = false;
@@ -51,8 +52,8 @@ public class PauseMenuFishing : MonoBehaviour
     }
 
     public void ResumeGame(){
-        Debug.Log("Resumed");
         Paused = false;
+        pauseMenu.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         exitButton.interactable = true;
@@ -60,4 +61,9 @@ public class PauseMenuFishing : MonoBehaviour
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
         Time.timeScale = 1;
     }
+
+    private void OnDestroy(){
+        Time.timeScale = 1;
+    }
+
 }

@@ -41,6 +41,7 @@ public class GoFishScript : MonoBehaviour
     public void GoFish(){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = false;
+        CameraController.GetComponentInChildren<PauseMenuFishing>().enabled = false;
         playerNStats.Hunger = playerNStats.SubtractFromStat(playerNStats.hungerBar, playerNStats.Hunger, 5f);
         playerNStats.Thirst = playerNStats.SubtractFromStat(playerNStats.thirstBar, playerNStats.Thirst, 5f);
         playerNStats.Rest = playerNStats.SubtractFromStat(playerNStats.restBar, playerNStats.Rest, 5f);
