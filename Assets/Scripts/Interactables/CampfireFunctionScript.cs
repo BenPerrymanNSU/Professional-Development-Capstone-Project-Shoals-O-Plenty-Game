@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class CampfireFunctionScript : MonoBehaviour
 {
+    public GameObject container;
+    public GameObject worldCanvas;
+
     public Image Menu;
     public Image cookingMenu;
     public Image Reticle;
@@ -24,23 +27,40 @@ public class CampfireFunctionScript : MonoBehaviour
     public Button fishingSceneButton;
     public Slider waterSlider;
     public Slider cookSlider;
+    public List<Button> fishButtons;
+
     public AudioSource cookSound;
     public AudioSource boilSound;
     public AudioSource completeCookBoil;
+
     public PlayerNeedStats playerNStats;
     private InvItemData consumableItemData;
     public InvItemContainer playerInventory;
     public InvScript_UI playerInventoryUI;
     public FollowingCanvas fCanvas;
+
+    private string[] existingFishNames = {"Carp", "Goldfish", "Starfish", "Barracuda", "Bluefish", "Dolphinfish", "Bluefin", "Sunfish", "Swordfish"};
     private string buttonString;
     private string fishName;
     private string scriptableObjectPath;
-    public GameObject container;
-    public GameObject worldCanvas;
     public int sliderVal;
+    private int fishButtonListSize = 9;
     public static int sliderWaterTempVal;
     public static int sliderCookTempVal;
     public static bool sliderFirstTime;
+
+    public void Start(){
+        fishButtons = new List<Button>(fishButtonListSize);
+        fishButtons.Add(carpButton);
+        fishButtons.Add(goldfishButton);
+        fishButtons.Add(starfishButton);
+        fishButtons.Add(barracudaButton);
+        fishButtons.Add(bluefishButton);
+        fishButtons.Add(dolphinfishButton);
+        fishButtons.Add(bluefinButton);
+        fishButtons.Add(sunfishButton);
+        fishButtons.Add(swordfishButton);
+    }
 
     public void ScriptFunction(bool called){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
@@ -66,14 +86,51 @@ public class CampfireFunctionScript : MonoBehaviour
     }
 
     public void BoilButtonFunc(bool called){
+        var cookOrBoil = "Boil";
         BoilButton.interactable = false;
-        StartCoroutine(BoilWater(called));
+        fishingSceneButton.interactable = false;
+        fCanvas.WaterSliderEnabled();
+        StartCoroutine(CampfireTimer(sliderCookTempVal, sliderVal, waterSlider, boilSound, cookOrBoil, called));
     }
 
     public void CookButtonFunc(bool called){
         Menu.gameObject.SetActive(false);
         CookableFishTest();
         cookingMenu.gameObject.SetActive(true);
+    }
+
+    private void CookFood(bool called){
+        var cookOrBoil = "Cook";
+        fishingSceneButton.interactable = false;
+        carpButton.interactable = false;
+        goldfishButton.interactable = false;
+        starfishButton.interactable = false;
+        barracudaButton.interactable = false;
+        bluefishButton.interactable = false;
+        dolphinfishButton.interactable = false;
+        bluefinButton.interactable = false;
+        sunfishButton.interactable = false;
+        swordfishButton.interactable = false;
+        CookButton.interactable = false;
+        fCanvas.CookSliderEnabled();
+        StartCoroutine(CampfireTimer(sliderCookTempVal, sliderVal, cookSlider, cookSound, cookOrBoil, called));
+    }
+
+    public void NoButton(bool called){
+        Menu.gameObject.SetActive(false);
+        cookingMenu.gameObject.SetActive(false);
+        Reticle.gameObject.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        GameObject CameraController = GameObject.Find("PlayerTestCamera");
+        CameraController.GetComponent<PlayerPOV>().enabled = true;
+        CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
+        called = false;
+    }
+
+    public void BackButton(bool called){
+        cookingMenu.gameObject.SetActive(false);
+        Menu.gameObject.SetActive(true);
     }
 
     public void CookableFishTest(){
@@ -98,62 +155,16 @@ public class CampfireFunctionScript : MonoBehaviour
         }
     }
 
-    public void NoButton(bool called){
-        Menu.gameObject.SetActive(false);
-        cookingMenu.gameObject.SetActive(false);
-        Reticle.gameObject.SetActive(true);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        GameObject CameraController = GameObject.Find("PlayerTestCamera");
-        CameraController.GetComponent<PlayerPOV>().enabled = true;
-        CameraController.GetComponentInChildren<PlayerCommands>().enabled = true;
-        called = false;
-    }
-
-    public void BackButton(bool called){
-        cookingMenu.gameObject.SetActive(false);
-        Menu.gameObject.SetActive(true);
-    }
-
     public void FishCookButton(bool called){
         buttonString = EventSystem.current.currentSelectedGameObject.name.ToString();
-        if(buttonString == carpButton.ToString().Split()[0]){
-            fishName = "Carp";
-             StartCoroutine(InventoryItemFinder(fishName));
+        for(int i = 0; i < 9; i++){
+            Debug.Log(fishButtons[i]);
+            if(buttonString == fishButtons[i].ToString().Split()[0]){
+                fishName = existingFishNames[i];
+                StartCoroutine(InventoryItemFinder(fishName));
+            }
         }
-        if(buttonString == goldfishButton.ToString().Split()[0]){
-            fishName = "Goldfish";
-            StartCoroutine(InventoryItemFinder(fishName));
-        }
-        if(buttonString == starfishButton.ToString().Split()[0]){
-            fishName = "Starfish";
-            StartCoroutine(InventoryItemFinder(fishName));
-        }
-        if(buttonString == barracudaButton.ToString().Split()[0]){
-            fishName = "Barracuda";
-            StartCoroutine(InventoryItemFinder(fishName));
-        }
-        if(buttonString == bluefishButton.ToString().Split()[0]){
-            fishName = "Bluefish";
-            StartCoroutine(InventoryItemFinder(fishName));
-        }
-        if(buttonString == dolphinfishButton.ToString().Split()[0]){
-            fishName = "Dolphinfish";
-            StartCoroutine(InventoryItemFinder(fishName));
-        }
-        if(buttonString == bluefinButton.ToString().Split()[0]){
-            fishName = "Bluefin";
-            StartCoroutine(InventoryItemFinder(fishName));
-        }
-        if(buttonString == sunfishButton.ToString().Split()[0]){
-            fishName = "Sunfish";
-            StartCoroutine(InventoryItemFinder(fishName));
-        }
-        if(buttonString == swordfishButton.ToString().Split()[0]){
-            fishName = "Swordfish";
-            StartCoroutine(InventoryItemFinder(fishName));
-        }
-        StartCoroutine(CookFood(called));
+        CookFood(called);
     }
 
     public IEnumerator InventoryItemFinder(string itemName){
@@ -169,93 +180,62 @@ public class CampfireFunctionScript : MonoBehaviour
         }
     }
 
-
-    private IEnumerator BoilWater(bool called){
+    public IEnumerator CampfireTimer(int sliderTempVal, int campSliderVal, Slider campSlider, AudioSource campSound, string identity, bool called){
         var inventory = container.GetComponent<InvItemContainer>();
-        fishingSceneButton.interactable = false;
-        fCanvas.WaterSliderEnabled();
-        boilSound.Play();
+        var processID = 0;
+        if(identity == "Cook"){
+            processID = 1;
+        }
+        else if(identity == "Boil"){
+            processID = 2;
+        }
+        campSound.Play();
         for(int i = 0; i < 60; i++){
-            if(sliderWaterTempVal != 0){
-                sliderVal = sliderWaterTempVal;
-                i = sliderVal;
-                waterSlider.value -= sliderVal;
-                fCanvas.WaterSliderUpdater(sliderVal);
-                sliderWaterTempVal = 0;
+            if(sliderTempVal != 0){
+                campSliderVal = sliderTempVal;
+                i = campSliderVal;
+                campSlider.value -= campSliderVal;
+                fCanvas.UpdateSlider(processID, 1);
+                sliderTempVal = 0;
                 yield return new WaitForSeconds(1f);
             }
             else{
-                sliderVal++;
+                campSliderVal++;
                 yield return new WaitForSeconds(1f);
-                waterSlider.value -= 1;
-                fCanvas.WaterSliderUpdater(1);
+                campSlider.value -= 1;
+                fCanvas.UpdateSlider(processID, 1);
             }
         }
-        consumableItemData = Resources.Load<InvItemData>("ScriptedObjects/Consumable/WaterContainer");
-        if (!inventory) yield break;
-        if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
-        sliderVal = 0;
-        waterSlider.value = 0;
-        fCanvas.worldWaterSlider.value = 0;
-        sliderWaterTempVal = 0;
-        called = false;
-        fishingSceneButton.interactable = true;
-        BoilButton.interactable = true;
-        boilSound.Stop();
-        completeCookBoil.Play();
-        fCanvas.CallDisableCoroutine(2);
-    }
-
-    private IEnumerator CookFood(bool called){
-        var inventory = container.GetComponent<InvItemContainer>();
-        fishingSceneButton.interactable = false;
-        carpButton.interactable = false;
-        goldfishButton.interactable = false;
-        starfishButton.interactable = false;
-        barracudaButton.interactable = false;
-        bluefishButton.interactable = false;
-        dolphinfishButton.interactable = false;
-        bluefinButton.interactable = false;
-        sunfishButton.interactable = false;
-        swordfishButton.interactable = false;
-        CookButton.interactable = false;
-        fCanvas.CookSliderEnabled();
-        cookSound.Play();
-        for(int i = 0; i < 60; i++){
-            if(sliderCookTempVal != 0){
-                sliderVal = sliderCookTempVal;
-                i = sliderVal;
-                cookSlider.value -= sliderVal;
-                fCanvas.CookSliderUpdater(sliderVal);
-                sliderCookTempVal = 0;
-                yield return new WaitForSeconds(1f);
-            }
-            else{
-                sliderVal++;
-                yield return new WaitForSeconds(1f);
-                cookSlider.value -= 1;
-                fCanvas.CookSliderUpdater(1);
-            }
+        campSliderVal = 0;
+        campSlider.value = 0;
+        sliderTempVal = 0;
+        
+        if(identity == "Cook"){
+            consumableItemData = Resources.Load<InvItemData>("ScriptedObjects/Consumable/" + "Cooked" + scriptableObjectPath);
+            if (!inventory) yield break;
+            if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
+            fCanvas.worldCookSlider.value = 0;
+            called = false;
+            CookableFishTest();
+            fCanvas.CallDisableCoroutine(1);
+            CookButton.interactable = true;
         }
-        consumableItemData = Resources.Load<InvItemData>("ScriptedObjects/Consumable/" + "Cooked" + scriptableObjectPath);
-        if (!inventory) yield break;
-        if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
-        sliderVal = 0;
-        cookSlider.value = 0;
-        fCanvas.worldCookSlider.value = 0;
-        sliderCookTempVal = 0;
-        called = false;
-        CookableFishTest();
+        else if(identity == "Boil"){
+            consumableItemData = Resources.Load<InvItemData>("ScriptedObjects/Consumable/WaterContainer");
+            if (!inventory) yield break;
+            if (inventory.InvSystem2.AddToInvSlot(consumableItemData, 1)){}
+            fCanvas.worldWaterSlider.value = 0;
+            called = false;
+            fCanvas.CallDisableCoroutine(2);
+            BoilButton.interactable = true;
+        }
+
         fishingSceneButton.interactable = true;
-        CookButton.interactable = true;
-        cookSound.Stop();
+        campSound.Stop();
         completeCookBoil.Play();
-        fCanvas.CallDisableCoroutine(1);
+        
     }
 
-    void OnDestroy(){
-        sliderWaterTempVal = sliderVal;
-        sliderCookTempVal = sliderVal;
-    }
+
 
 }

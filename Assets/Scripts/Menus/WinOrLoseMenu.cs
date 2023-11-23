@@ -12,6 +12,8 @@ public class WinOrLoseMenu : MonoBehaviour
     public InvItemContainer playerInvCon;
     public bool finalState;
 
+    // Upon activation deduce if the player has won or lost the game and change
+    // graphics accordingly, resets player inventory before they quit or replay.
     void Awake(){
         finalState = gameState.State2;
         Cursor.visible = true;

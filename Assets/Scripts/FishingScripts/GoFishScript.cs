@@ -21,6 +21,7 @@ public class GoFishScript : MonoBehaviour
     public GameObject ellipsis3;
     public Text FishPercentageText;
     public Image readyGoImage;
+    public Image nothingText;
     public Sprite readyGoSprite;
     public Button goFishButton;
     public Button exitButton;
@@ -32,6 +33,7 @@ public class GoFishScript : MonoBehaviour
     public InvItemData[] itemDataMaterial;
     public InvItemData itemDataFishing;
 
+    // At start instate fish and material arrays, these hold the item data for fish/materials that can be caught.
     void Start(){
         InvItemData[] itemDataEasyFish = new InvItemData[3];
         InvItemData[] itemDataMedFish = new InvItemData[3];
@@ -39,18 +41,22 @@ public class GoFishScript : MonoBehaviour
         InvItemData[] itemDataMaterial = new InvItemData[3];
     }
 
+    // Upon pressing this button, it will find the player camera and disable their ability to pause and open the inventory.
+    // It will then subtract from the players hunger, thirst, and rest as a sort of payment to play the fishing minigame.
+    // disables the fishing button and exit button to avoid potential bugs and begins the waiting process.
     public void GoFish(){
         GameObject CameraController = GameObject.Find("PlayerTestCamera");
         CameraController.GetComponentInChildren<PlayerCommands>().enabled = false;
         CameraController.GetComponentInChildren<PauseMenuFishing>().enabled = false;
-        playerNStats.Hunger = playerNStats.SubtractFromStat(playerNStats.hungerBar, playerNStats.Hunger, 3f);
-        playerNStats.Thirst = playerNStats.SubtractFromStat(playerNStats.thirstBar, playerNStats.Thirst, 3f);
-        playerNStats.Rest = playerNStats.SubtractFromStat(playerNStats.restBar, playerNStats.Rest, 3f);
+        playerNStats.Hunger = playerNStats.SubtractFromStat(playerNStats.hungerBar, playerNStats.Hunger, 2f);
+        playerNStats.Thirst = playerNStats.SubtractFromStat(playerNStats.thirstBar, playerNStats.Thirst, 2f);
+        playerNStats.Rest = playerNStats.SubtractFromStat(playerNStats.restBar, playerNStats.Rest, 2f);
         goFishButton.interactable = false;
         exitButton.interactable = false;
         StartCoroutine(Ellipsis());
     }
 
+    // Simulates waiting for a fish to bite the fishing line, once finished it show the player the result.
     private IEnumerator Ellipsis(){
         reelSound.Play();
         FishingRodMovement.SetBool("FishingBegin", true);
@@ -63,6 +69,13 @@ public class GoFishScript : MonoBehaviour
         Invoke("FindFish", 1.5f);
     }
 
+    // Sets up important values and disables unecessary graphics before determining if the random number
+    // falls within either the fish, material, or empty results.
+    // If the result is a fish, it generates another random number to decide the fish's difficulty
+    // it then will pull a random fish from the respective difficulty array and begin the gameplay portion.
+    // If the result is a material, it randomly pulls from the material array and then begins the gameplay portion.
+    // If the reult is nothing, then it resets the fishing rod's animations back to default and disables uncessary
+    // objects. The nothing graphic is then shown via a coroutine.
     private void FindFish(){
         StopCoroutine("Ellipsis");
         var fishPercentage = 0.85f;
@@ -106,14 +119,17 @@ public class GoFishScript : MonoBehaviour
         else{
             Line.SetActive(false);
             Bobber.SetActive(false);
+            StartCoroutine(Nothing());
             reelSound.Stop();
             FishingRodMovement.SetBool("FishingBegin", false);
             FishingRodMovement.Play("Base Layer.FishingIdle", 0, 0f);
-            goFishButton.interactable = true;
-            exitButton.interactable = true; 
         }
     }
 
+    // This function pulls a random fish/material from their respective arrays and then
+    // sets the chances for spawning good and bad tokens for the gameplay portion.
+    // the required percent is how well the player needs to do in the gameplay portion
+    // to actually catch the fish and add it to their inventory.
     private void SetFish(InvItemData[] itemList){
         var randomRange = Random.Range(0, 3);
         itemDataFishing = itemList[randomRange];
@@ -123,6 +139,7 @@ public class GoFishScript : MonoBehaviour
         requiredPercent = itemDataFishing.itemRequiredPercent;
     }
 
+    // Activates the models needed for the gameplay portion to begin.
     private void ModelActivation(){
         fishingUI.SetActive(true);
         fishingKeys.SetActive(true);
@@ -132,6 +149,8 @@ public class GoFishScript : MonoBehaviour
         readyGoImage.gameObject.SetActive(true);
     }
 
+    // enables control of the player's fishing bobber when the sign says "GO"
+    // begins the animation for the tiles holding the good and bad fish keys to move.
     private IEnumerator MoveFishKeys(){
         FishingRodMovement.SetBool("FishingRodFlingFinish", true);
         yield return new WaitForSeconds(3f);
@@ -142,5 +161,14 @@ public class GoFishScript : MonoBehaviour
         yield return new WaitForSeconds(1f);
         readyGoImage.gameObject.SetActive(false);
         FishKeyMovement.SetBool("FishBool", false);
+    }
+
+    // pops up a graphic to inform the player that they did not get a fish/material.
+    private IEnumerator Nothing(){
+        nothingText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        nothingText.gameObject.SetActive(false);
+        goFishButton.interactable = true;
+        exitButton.interactable = true; 
     }
 }

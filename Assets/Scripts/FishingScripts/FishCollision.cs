@@ -13,9 +13,12 @@ public class FishCollision : MonoBehaviour
     public float fishCatchNum = 0.00f;
     public bool fishFound = false;
 
+    // Checks to see if the player's fish catch rate value has decreased or increase too much and
+    // sets them to a min/max value. This also updates the fishing catch rate text displayed to the
+    // player while the minigame is being played. Finally, this detects if the player is pressing the
+    // space bar over a fish or has pressed it over nothing. The catch rate increases if its a fish
+    // and decreases if the player misses.
     void Update(){
-        fishPercentageText.text = (Mathf.Round(fishCatchPercentage * 100)).ToString() + "%";
-
         if(fishCatchPercentage < 0.00f){
             fishCatchPercentage = 0.00f;
         }
@@ -23,6 +26,8 @@ public class FishCollision : MonoBehaviour
         if(fishCatchPercentage > 1.00f){
             fishCatchPercentage = 1.00f;
         }
+
+        fishPercentageText.text = (Mathf.Round(fishCatchPercentage * 100)).ToString() + "%";
 
         if(fishFound == true){
             bobberIndicater.GetComponent<MeshRenderer>().material.color = Color.green;
@@ -41,6 +46,9 @@ public class FishCollision : MonoBehaviour
         }
     }
 
+    // Triggerbox attached to the player's bobber during the minigame detects
+    // whether or not the fish token is a good or bad fish. Good fish increase the 
+    // catch rate value, while bad ones decrease it.
     void OnTriggerEnter(Collider col){
         if (col.tag == "GoodFish"){
             fishFound = true;         
@@ -53,6 +61,9 @@ public class FishCollision : MonoBehaviour
         }
     }
 
+    // Upon the fish tokens exiting the bobber's triggerbox it disables their
+    // hitboxes to ensure the player cannot spam the space bar and get a ton
+    // of free points.
     void OnTriggerExit(Collider col){
         if (col.tag == "GoodFish"){
             fishFound = false;

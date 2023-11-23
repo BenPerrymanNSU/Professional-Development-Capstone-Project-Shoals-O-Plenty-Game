@@ -21,6 +21,9 @@ public class PlayerNeedStats : MonoBehaviour
     private static bool firstActivation;
     private bool gameOverCalled = false;
 
+    // Upon activation find stat bar graphics and set them accordingly.
+    // If first activation then set bar graphics and interal values to be full.
+    // Else apply previously saved values from static versions and update bar graphics.
     void Start(){
         hungerBar = GameObject.Find("HungerBar").GetComponent<Slider>();
         thirstBar = GameObject.Find("ThirstBar").GetComponent<Slider>();
@@ -42,19 +45,24 @@ public class PlayerNeedStats : MonoBehaviour
         }
     }
 
+    // As the game is played slowly reduce the player's hunger, thirst, and rest
+    // in accordance with the interal clock. Every in-game 59 seconds reduces the
+    // players stats by 1.
     void Update(){
-        if((clockTimer.calcMinute == 30f || clockTimer.calcMinute == 59f) && statLoweringCD == false){
+        if((clockTimer.calcMinute == 59f) && statLoweringCD == false){
             Hunger = SubtractFromStat(hungerBar, Hunger, 1f);
             Thirst = SubtractFromStat(thirstBar, Thirst, 1f);
             Rest = SubtractFromStat(restBar, Rest, 1f);
             statLoweringCD = true;
         }
-        else if(clockTimer.calcMinute == 15f || clockTimer.calcMinute == 45f ){
+        else if(clockTimer.calcMinute == 45f ){
             statLoweringCD = false;
         }
 
     }
 
+    // Upon any of the player's stats reaching 20 or below, activate red filter to indicate danger.
+    // If any of the player's stats reaches 0, call the game over coroutine to start transition to the win/lose screen.
     void FixedUpdate(){
         if(Hunger <= 20 && gameOverCalled == false || Thirst <= 20 && gameOverCalled == false || Rest <= 20 && gameOverCalled == false){
             redWarning.gameObject.SetActive(true);
@@ -68,6 +76,8 @@ public class PlayerNeedStats : MonoBehaviour
         }
     }
 
+    // Increases passed in player stat by a passed in amount and updates the associated 
+    // bar graphic. Player stats can't go above 100 or below 0.
     public float AddToStat(Slider needStatBar, float needStat, float increaseStatAmount){
         needStat += increaseStatAmount;
         if(needStat > 100f){
@@ -80,6 +90,8 @@ public class PlayerNeedStats : MonoBehaviour
         return needStat;
     }
 
+    // Decreases passed in player stat by a passed in amount and updates the associated 
+    // bar graphic. Player stats can't go above 100 or below 0.
     public float SubtractFromStat(Slider needStatBar, float needStat, float increaseStatAmount){
         needStat -= increaseStatAmount;
         if(needStat > 100f){
@@ -92,10 +104,15 @@ public class PlayerNeedStats : MonoBehaviour
         return needStat;
     }
 
+    // Increases the passed in stat bar slider graphic value.
     public void AddToStatBar(Slider needStatBar, float addStatAmount){
         needStatBar.value = addStatAmount;
     }
 
+    // Checks to see if the player has died due to their stats reaching 0.
+    // when this triggers, sets stat to full then reduce them by 35 as a
+    // punishment they will see when re-entering the game.
+    // Finally, this transports to the win/lose screen scene.
     private IEnumerator GameOverCheck(){
         gameOverCalled = true;
         yield return new WaitForSeconds(.1f);
@@ -111,6 +128,10 @@ public class PlayerNeedStats : MonoBehaviour
         gameCompletion.WinOrLose(false);
     }
 
+    // When the scene is changed this stores the players current hunger,
+    // thirst, and rest stats into static version to save between scenes.
+    // these are applied at the start to ensure the players stats will 
+    // continue to reduce as the game is played.
     void OnDestroy(){
         hungerTemp = Hunger;
         thirstTemp = Thirst;
