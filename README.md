@@ -1,6 +1,7 @@
 # Professional-Development-Capstone-Project
 Storage space for my Capstone project assets and files
 
+-------------------------------
 Controls:
 Mouse and Keyboard
 -------------------------------
@@ -36,3 +37,4 @@ Press the 1-9 keys to recieve varies items inside of your inventory for testing 
 7 - Rope
 8 - Rock
 9 - Bluefin Tuna
+-------------------------------
