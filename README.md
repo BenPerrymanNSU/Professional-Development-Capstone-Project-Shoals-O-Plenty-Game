@@ -5,13 +5,13 @@ Storage space for my Capstone project assets and files
 Controls:
 Mouse and Keyboard
 -------------------------------
-WASD - Moves the character
-Mouse - Moves the camera
-Left Click - interact with items within the player's inventory, move items around
-Right Click - Eat selected Item
-E - Interact with objects with an E icon
-I - Opens player inventory
-ESC - Opens pause menu
+A. WASD - Moves the character
+B. Mouse - Moves the camera
+C. Left Click - interact with items within the player's inventory, move items around
+D. Right Click - Eat selected Item
+E. E - Interact with objects with an E icon
+F. I - Opens player inventory
+G. ESC - Opens pause menu
 -------------------------------
 
 Goal:
@@ -28,13 +28,13 @@ hunger, thirst, or rest reach 0/the bar graphic becomes empty.
 Debug
 -------------------------------
 Press the 1-9 keys to recieve varies items inside of your inventory for testing the game's mechanics!
-1 - Goldfish
-2 - Barracuda
-3 - 99 Goldfish
-4 - 99 Barracuda
-5 - Swordfish
-6 - WoodPlank
-7 - Rope
-8 - Rock
-9 - Bluefin Tuna
+1. 1 - Goldfish
+2. 2 - Barracuda
+3. 3 - 99 Goldfish
+4. 4 - 99 Barracuda
+5. 5 - Swordfish
+6. 6 - WoodPlank
+7. 7 - Rope
+8. 8 - Rock
+9. 9 - Bluefin Tuna
 -------------------------------
