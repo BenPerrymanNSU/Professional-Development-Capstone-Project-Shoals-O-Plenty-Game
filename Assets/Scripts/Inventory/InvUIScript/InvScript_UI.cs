@@ -23,6 +23,9 @@ public class InvScript_UI : MonoBehaviour
         UpdateUISlot(slot);
     }
 
+    // If the data within a slot is not null and the sprite is not null, then
+    // update the item data's sprite and stack count to reflect the current
+    // item data. Otherwise empty the UI Slot data.
     public void UpdateUISlot(InvItemSlot slot){
         if(slot.itemData2 != null){
             if(slot.itemData2.itemIcon != null){

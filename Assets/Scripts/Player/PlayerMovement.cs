@@ -1,13 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public ThirdPersonCharacter character;
-    public Animator animator;
-
     public float movementAcceleration;
     public float movementMaxSpeed = 10000;
     public Vector3 moveDirection;
@@ -55,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     void moveThePlayer(Vector3 movement) {
         rigidBody.AddForce(movement);
-        character.UpdateAnimator(movement);
     }
     
 }
