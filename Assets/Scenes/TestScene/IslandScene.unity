@@ -15585,6 +15585,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1117015745611926529, guid: 31061de9959bd5d4d809a31e1e2e9b6f, type: 3}
+      propertyPath: m_MinValue
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 1117015746098560444, guid: 31061de9959bd5d4d809a31e1e2e9b6f, type: 3}
       propertyPath: canvasFocus
       value: 
@@ -15676,6 +15680,10 @@ PrefabInstance:
     - target: {fileID: 1117015746098560447, guid: 31061de9959bd5d4d809a31e1e2e9b6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117015746818397550, guid: 31061de9959bd5d4d809a31e1e2e9b6f, type: 3}
+      propertyPath: m_MinValue
+      value: -20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31061de9959bd5d4d809a31e1e2e9b6f, type: 3}
