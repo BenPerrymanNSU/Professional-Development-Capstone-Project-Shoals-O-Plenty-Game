@@ -190,7 +190,7 @@ public class CampfireFunctionScript : MonoBehaviour
             processID = 2;
         }
         campSound.Play();
-        for(int i = 0; i < 60; i++){
+        for(int i = 0; i < 20; i++){
             if(sliderTempVal != 0){
                 campSliderVal = sliderTempVal;
                 i = campSliderVal;

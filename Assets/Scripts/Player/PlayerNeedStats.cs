@@ -50,9 +50,9 @@ public class PlayerNeedStats : MonoBehaviour
     // players stats by 1.
     void Update(){
         if((clockTimer.calcMinute == 59f) && statLoweringCD == false){
-            Hunger = SubtractFromStat(hungerBar, Hunger, 1f);
-            Thirst = SubtractFromStat(thirstBar, Thirst, 1f);
-            Rest = SubtractFromStat(restBar, Rest, 1f);
+            Hunger = SubtractFromStat(hungerBar, Hunger, 2f);
+            Thirst = SubtractFromStat(thirstBar, Thirst, 2f);
+            Rest = SubtractFromStat(restBar, Rest, 2f);
             statLoweringCD = true;
         }
         else if(clockTimer.calcMinute == 45f ){
