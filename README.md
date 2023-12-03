@@ -1,6 +1,21 @@
-# Professional-Development-Capstone-Project
-Storage space for my Capstone project assets and files
+# Professional-Development-Capstone-Project:-Shoals-O'-Plenty-Game
 
+Repository of my completed fall 2023 Capstone Project for the NSU Computer Science department.
+-------------------------------
+Opening Instructions:
+-------------------------------
+* Open in Unity Editor:
+1. Download the Assets, Packages, and Project Settings folders
+2. Place each within a new folder
+3. Open Unity Hub
+4. Click the drowndown arrow by Add
+5. Click "Add project from disk"
+6. Make sure the Editor Version is set to 2021.3.15f1 or there may be compatibility issues
+7. Open the project
+
+* Open Uploaded Build:
+1. Download Shoals O' Plenty Build 0.6 Folder
+2. Run Shoals O' Plenty.exe to play the game
 -------------------------------
 Controls:
 Mouse and Keyboard
